@@ -9,6 +9,7 @@ export default {
         primaryAlt: '#25333E', // dark feature-band surfaces, navy cards
         accent: '#E0B384', // buttons, links, icons, CTAs
         accentBright: '#F5C18A', // hover/active states, glows
+        accentDeep: '#9A6A22', // gold for small TEXT on white (~4.7:1, WCAG AA); not for fills
         pageBg: '#FFFFFF', // primary page background (dominant)
         neutralWarm: '#F7F4EF', // alternating section bands
         neutralLine: '#E8E2D9', // hairline borders, dividers
