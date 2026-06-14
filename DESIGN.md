@@ -85,7 +85,10 @@ section padding by scaling it down gracefully (e.g. py-16 mobile,
 py-24 desktop).
 
 ## 10. Logo & Assets
-- `images/logo-horizontal.png` — nav (use the version that reads on a
-  white or navy bar) and footer.
-- `images/logo-mark.png` — favicon and compact/avatar placements.
+Logos live in `public/` and are served from the site root.
+- `/logo-horizontal.png` — nav (use the version that reads on a white or
+  navy bar) and footer.
+- `/logo-mark.png` — favicon and compact/avatar placements.
 - Give the logo clear space; never stretch, recolor, or place gold-on-gold.
+- Visual reference for the target look: `references/aisun-reference.webp`
+  (light, airy clean-tech EV layout the design direction is based on).
