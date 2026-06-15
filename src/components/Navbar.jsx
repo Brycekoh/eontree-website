@@ -25,16 +25,11 @@ export default function Navbar() {
           href="#top"
           className="flex items-center rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
         >
-          {/*
-            TODO[ASSET]: /logo-horizontal.png has a baked-in NAVY background.
-            Until a transparent/light-bg version is supplied, the rounded
-            container below softens the navy block into an intentional chip.
-            Swap to the transparent logo when available (and drop rounding).
-          */}
+          {/* /logo-horizontal.png — transparent gold lockup, reads on white. */}
           <img
             src="/logo-horizontal.png"
             alt="EonTree Technologies"
-            className="h-12 w-auto rounded-lg md:h-14"
+            className="h-14 w-auto md:h-16"
           />
         </a>
 
