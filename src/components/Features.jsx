@@ -41,7 +41,7 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="relative overflow-hidden bg-pageBg">
+    <section id="features" className="relative overflow-hidden bg-pageBg">
       {/* neutralWarm (How It Works above) spills down into white */}
       <CurveDivider fill="#F7F4EF" />
 

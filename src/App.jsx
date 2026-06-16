@@ -17,6 +17,7 @@
 //   11b. Contact      (neutralWarm) — consultation form, id="contact"
 //   12. Footer        (navy)
 import Navbar from './components/Navbar.jsx'
+import SectionNav from './components/SectionNav.jsx'
 import Hero from './components/Hero.jsx'
 import TrustStrip from './components/TrustStrip.jsx'
 import Solutions from './components/Solutions.jsx'
@@ -35,6 +36,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-pageBg text-textBody">
       <Navbar />
+      <SectionNav />
       <main>
         <Hero />
         <TrustStrip />

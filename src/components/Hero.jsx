@@ -57,11 +57,11 @@ export default function Hero() {
             <h1 className="max-w-[11ch] font-serif text-6xl leading-[0.98] text-white drop-shadow-[0_5px_26px_rgba(28,44,57,0.46)] sm:text-7xl lg:text-8xl">
               Your whole home, working as one.
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/88 sm:text-xl">
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/90 sm:text-xl">
               We design and install smart lighting, security, climate, and AV,
               then set it up so it actually works together.
             </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+            <div className="mt-8">
               <a
                 href="#contact"
                 className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 text-base font-semibold text-primary shadow-[0_16px_40px_rgba(28,44,57,0.26)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-accentBright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
@@ -69,9 +69,6 @@ export default function Hero() {
                 Book a consultation
                 <ArrowRight size={18} aria-hidden="true" />
               </a>
-              <span className="text-sm font-medium text-white/78">
-                Video placeholder: replace with EonTree-owned project footage.
-              </span>
             </div>
           </div>
         </div>
