@@ -1,8 +1,9 @@
+import { ArrowRight } from 'lucide-react'
 import CurveDivider from './CurveDivider.jsx'
 import Leaf from './Leaf.jsx'
 
 // DESIGN.md §8.11 — final CTA band (navy). Heading per the brief; no app-
-// download block (EonTree has no app). Its "Book a consultation" button points
+// download block (EonTree has no app). Its "Plan your space" button points
 // to #contact (the consultation form just below).
 export default function FinalCTA() {
   return (
@@ -27,9 +28,14 @@ export default function FinalCTA() {
           </p>
           <a
             href="#contact"
-            className="mt-8 inline-flex cursor-pointer items-center justify-center rounded-full bg-accent px-8 py-3.5 text-base font-semibold text-primary shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-accentBright hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+            className="group mt-8 inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-gradient-to-b from-accentBright to-accent px-8 py-3.5 text-base font-semibold text-primary shadow-[0_14px_38px_-10px_rgba(224,179,132,0.55)] ring-1 ring-inset ring-white/40 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_20px_48px_-10px_rgba(224,179,132,0.7)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
           >
-            Book a consultation
+            Plan your space
+            <ArrowRight
+              size={18}
+              aria-hidden="true"
+              className="transition-transform duration-200 group-hover:translate-x-1"
+            />
           </a>
         </div>
       </div>

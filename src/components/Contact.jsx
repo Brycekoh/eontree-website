@@ -5,7 +5,7 @@ import EyebrowPill from './EyebrowPill.jsx'
 import Leaf from './Leaf.jsx'
 
 // DESIGN.md §8 / EonTree-copy.md — consultation form. Carries id="contact" so
-// the nav "Contact" link and every "Book a consultation" CTA resolve here.
+// the nav "Contact" link and every "Plan your space" CTA resolve here.
 // No <form> tag (CLAUDE.md rule) — controlled inputs + an onClick handler.
 // Mock handler only: logs the payload, no backend.
 const propertyTypes = ['Home', 'Commercial', 'New build']
