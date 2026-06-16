@@ -1,25 +1,27 @@
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Facebook, Instagram, Linkedin, Youtube } from 'lucide-react'
+import { scrollToId } from '../utils/scroll.js'
 
 // DESIGN.md §8.12 — navy footer. Columns from EonTree-copy.md.
 // MUST-REPLACE: contact details and the license number are [PLACEHOLDER];
 // fill with EonTree's real address / phone / email / license. Social links
-// point to # until real profiles exist.
+// and Careers/Resources point to # until real pages exist.
 const columns = [
   {
     title: 'Solutions',
     links: [
-      { label: 'Lighting', href: '#solutions' },
-      { label: 'Security', href: '#solutions' },
-      { label: 'Climate', href: '#solutions' },
-      { label: 'Audio-Visual', href: '#solutions' },
+      { label: 'Lighting', id: 'solutions' },
+      { label: 'Security', id: 'solutions' },
+      { label: 'Climate', id: 'solutions' },
+      { label: 'Audio-Visual', id: 'solutions' },
     ],
   },
   {
     title: 'Company',
     links: [
-      { label: 'How it works', href: '#how-it-works' },
-      { label: 'Projects', href: '#projects' },
-      { label: 'About', href: '#' },
+      { label: 'How it works', id: 'how-it-works' },
+      { label: 'Projects', id: 'projects' },
+      { label: 'About', to: '/about' },
       { label: 'Careers', href: '#' },
     ],
   },
@@ -50,6 +52,37 @@ const socials = [
 
 export default function Footer() {
   const year = new Date().getFullYear()
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  const onSection = (e, id) => {
+    e.preventDefault()
+    if (location.pathname === '/') scrollToId(id)
+    else navigate('/', { state: { scrollTo: id } })
+  }
+
+  const linkClass =
+    'rounded text-sm text-neutralWarm/70 transition-colors duration-200 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent'
+
+  const renderLink = (l) => {
+    if (l.to)
+      return (
+        <Link to={l.to} className={linkClass}>
+          {l.label}
+        </Link>
+      )
+    if (l.id)
+      return (
+        <a href={`/#${l.id}`} onClick={(e) => onSection(e, l.id)} className={linkClass}>
+          {l.label}
+        </a>
+      )
+    return (
+      <a href={l.href} className={linkClass}>
+        {l.label}
+      </a>
+    )
+  }
 
   return (
     <footer className="border-t border-white/10 bg-primary text-neutralWarm">
@@ -57,11 +90,13 @@ export default function Footer() {
         <div className="grid grid-cols-2 gap-10 lg:grid-cols-12">
           {/* Brand */}
           <div className="col-span-2 lg:col-span-4">
-            <img
-              src="/logo-horizontal.png"
-              alt="EonTree Technologies"
-              className="h-12 w-auto"
-            />
+            <Link to="/" className="inline-flex rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+              <img
+                src="/logo-horizontal.png"
+                alt="EonTree Technologies"
+                className="h-12 w-auto"
+              />
+            </Link>
             <p className="mt-4 max-w-xs text-sm text-neutralWarm/70">
               Smart-home design, installation, and support — one system, one
               app, one team.
@@ -88,14 +123,7 @@ export default function Footer() {
               </h3>
               <ul className="mt-4 space-y-2">
                 {col.links.map((l) => (
-                  <li key={l.label}>
-                    <a
-                      href={l.href}
-                      className="rounded text-sm text-neutralWarm/70 transition-colors duration-200 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                    >
-                      {l.label}
-                    </a>
-                  </li>
+                  <li key={l.label}>{renderLink(l)}</li>
                 ))}
               </ul>
             </div>
