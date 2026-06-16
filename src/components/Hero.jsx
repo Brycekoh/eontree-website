@@ -10,21 +10,19 @@ export default function Hero() {
         <div className="relative z-10">
           {/* Gold eyebrow (DESIGN.md §3) — accentDeep for AA contrast on white */}
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accentDeep">
-            {/* TODO[COPY]: eyebrow label */}
-            EV Charging, Installed Right
+            EV charging, done properly
           </p>
 
           {/* Oversized serif H1 */}
           <h1 className="mt-5 text-5xl leading-[1.05] text-primary sm:text-6xl">
-            {/* TODO[COPY]: hero headline */}
-            Fast, reliable EV charging for home and business.
+            Charging that&rsquo;s wired right the first time.
           </h1>
 
           {/* Sans subhead */}
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-textBody">
-            {/* TODO[COPY]: hero subhead */}
-            EonTree designs, installs, and supports clean-tech charging
-            infrastructure — certified, future-ready, and built to last.
+            We design, install, and look after EV charging for homes and
+            businesses. Certified electricians, a clean install, and a charger
+            that actually keeps working after we leave.
           </p>
 
           {/* CTAs — primary gold pill + secondary navy outline */}
@@ -33,13 +31,13 @@ export default function Hero() {
               href="#contact"
               className="inline-flex cursor-pointer items-center justify-center rounded-full bg-accent px-7 py-3.5 text-base font-semibold text-primary shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-accentBright hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             >
-              Book an Installation
+              Book a site visit
             </a>
             <a
               href="#products"
               className="inline-flex cursor-pointer items-center justify-center rounded-full border border-primary px-7 py-3.5 text-base font-semibold text-primary transition-all duration-200 hover:bg-primary hover:text-pageBg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             >
-              Explore Chargers
+              See our chargers
             </a>
           </div>
         </div>
