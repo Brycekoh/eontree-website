@@ -6,10 +6,10 @@ import { ShieldCheck, BadgeCheck, FileCheck2, Umbrella } from 'lucide-react'
 // genuine credentials and ideally swap the Lucide marks for real cert logos.
 // If a credential doesn't exist yet, list what's true instead.
 const badges = [
-  { icon: ShieldCheck, label: 'Licensed electrical contractor — #[PLACEHOLDER]' },
-  { icon: BadgeCheck, label: 'Certified install partner — [BRAND]' },
+  { icon: ShieldCheck, label: 'Licensed electrical / cabling contractor — #[PLACEHOLDER]' },
+  { icon: BadgeCheck, label: 'Certified installer — [BRAND PARTNER]' },
   { icon: FileCheck2, label: 'Workmanship warranty — [X] years' },
-  { icon: Umbrella, label: 'Insured up to $[PLACEHOLDER]' },
+  { icon: Umbrella, label: 'Fully insured' },
 ]
 
 export default function TrustStrip() {

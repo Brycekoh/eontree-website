@@ -1,94 +1,118 @@
-# EonTree Technologies — DESIGN.md
+# EonTree Technologies — DESIGN.md (Smart Home)
 
-## 1. Visual Theme & Atmosphere
-Modern clean-tech corporate. Light, airy, premium. Inspired by
-contemporary EV/clean-tech design (AISUN-style): generous whitespace,
-big confident headlines, soft rounded cards, calm restrained motion.
-Brand identity: "rooted in nature, powered by technology." The page is
-white-dominant and breathes; NAVY and GOLD punctuate it. NOT dark, NOT
-neon, NOT busy, NOT heavy gradients.
+## 0. What EonTree Is
+EonTree designs, supplies, and installs full smart-home systems —
+lighting, security, climate, and audio-visual — for residential AND
+commercial spaces. We resell and install trusted third-party brands and
+support them afterwards. The site sells the INTEGRATION (one system, one
+app, one team), not just gadgets.
 
-## 2. Color Palette & Roles
+## 1. Aesthetic Reference — "Orris layout, EonTree warmth"
+Structure and polish follow the Orris smart-home template: generous
+whitespace, calm uncluttered layouts, clean card grids (including a 2x3
+feature grid), big-number stat blocks beside body text, soft large
+rounded corners, imagery sitting in soft rounded "scene" containers,
+small pill/eyebrow tags above section headings, heavy restraint —
+nothing shouts.
+
+BUT the brand stays warm and rooted — do NOT adopt Orris's cool
+grey/blue tech palette or its all-sans type:
+- Accent is GOLD #E0B384 everywhere Orris would use blue.
+- Base is WHITE + warm off-white #F7F4EF bands (never cool grey).
+- Headings stay SERIF — our deliberate difference from sans templates.
+- Keep the nature motif (curved dividers, occasional leaf/branch
+  accent), applied subtly at Orris's level of restraint.
+Rule of thumb: Orris's arrangement, EonTree's temperature. Warm where
+Orris is cool, serif where Orris is sans, gold where Orris is blue.
+
+## 2. Visual Theme & Atmosphere
+Modern, calm, premium smart-home. Light, airy, warm. White-dominant
+page that breathes; NAVY and GOLD punctuate it. Trustworthy and
+considered, not cold or flashy. NOT dark, NOT neon, NOT busy, NOT
+chrome-tech.
+
+## 3. Color Palette & Roles
 | Name         | Hex      | Role                                                |
 |--------------|----------|-----------------------------------------------------|
-| primary      | #1C2C39  | Headings, nav bar, footer, occasional feature bands |
+| primary      | #1C2C39  | Headings, nav, footer, occasional feature bands     |
 | primaryAlt   | #25333E  | Dark feature-band surfaces, navy cards              |
 | accent       | #E0B384  | Buttons, links, icons, key highlights, CTAs         |
 | accentBright | #F5C18A  | Hover/active states, subtle glows                   |
 | pageBg       | #FFFFFF  | Primary page background (dominant)                  |
 | neutralWarm  | #F7F4EF  | Warm off-white for alternating section bands        |
 | neutralLine  | #E8E2D9  | Hairline borders, dividers, card outlines           |
-| textBody     | #3A4650  | Body text on light (navy-tinted grey, not pure black)|
-- White dominates. Use neutralWarm to alternate section backgrounds so
-  the page has rhythm. Gold is an ACCENT only — never large gold fills.
-- Navy is for type and a FEW high-impact dark bands (e.g. a stats
-  strip or the footer), not the default background.
+| textBody     | #3A4650  | Body text on light (navy-tinted grey, not black)    |
+- White dominates. Alternate white / neutralWarm bands for rhythm.
+- Gold is an ACCENT only — never large gold fills.
+- Navy is for type + a FEW high-impact dark bands (stats, footer).
 
-## 3. Typography
-- Headings: elegant serif (Cormorant Garamond or Playfair Display) —
-  mirrors the logo's serif wordmark. Large, airy, generous leading.
-  Hero H1 oversized.
+## 4. Typography
+- Headings: elegant serif (Cormorant Garamond or Playfair Display),
+  mirroring the logo wordmark. Large, airy, generous leading. Oversized
+  hero H1.
 - Body + UI: clean sans (Inter or Montserrat). Highly legible.
-- Big type, lots of breathing room. Section headers centered or
-  left-aligned with a short gold eyebrow label above.
+- Section header pattern: small uppercase GOLD eyebrow/pill tag, then a
+  large serif H2.
 
-## 4. Component Stylings
-- Buttons: PILL-shaped. Primary = gold fill, navy text, hover lifts to
+## 5. Component Stylings
+- Buttons: PILL-shaped. Primary = gold fill, navy text, hover to
   accentBright with soft shadow. Secondary = navy outline on white,
-  fills navy on hover. cursor-pointer on all clickable elements.
+  fills navy on hover. cursor-pointer on all.
 - Cards: white, rounded-2xl, soft low shadow, thin neutralLine border,
-  gentle lift + shadow on hover. Icon in a soft gold-tinted circle.
+  gentle lift on hover. Icons in soft gold-tinted circles — but vary
+  treatments so not every section is icon-in-circle-x3.
+- Imagery: placed in soft, large-radius rounded "scene" containers
+  (Orris-style), faint warm background, optional faint gold glow.
 - Inputs: clean, generous padding, rounded, gold focus ring.
-- Nav: navy bar OR white bar with navy text (pick white for max
-  airiness); horizontal logo left, gold pill CTA right.
-- Section eyebrow: small uppercase gold label above each section H2.
+- Nav: white bar, navy text, horizontal logo left, gold pill CTA right.
 
-## 5. Layout Principles
+## 6. Layout Principles
 Mobile-first. Spacing scale 4/8/16/24/48/96/128. Wide section padding
-(py-24 desktop). Max content width ~1200px, centered. Whitespace is a
-feature. Alternate white / neutralWarm section backgrounds for rhythm.
+(py-24+ desktop). Max content width ~1200px, centered. Whitespace is a
+feature. Alternate white / neutralWarm backgrounds. VARY layouts — do
+not render every section as a centered row of equal cards. Include at
+least one asymmetric section (image bleeding off an edge), one 2x3
+feature grid, varied section heights.
 
-## 6. Depth & Elevation
+## 7. Depth & Elevation
 Soft, low, diffuse shadows only. Cards lift gently on hover. No harsh
-borders or heavy drop shadows. One or two subtle gold radial glows
-behind hero/feature imagery are OK — keep them faint.
+borders or heavy drop shadows. One or two faint gold radial glows behind
+hero/feature imagery are OK — keep them subtle.
 
-## 7. Do's and Don'ts
-DO: white-dominant airy layout, serif headings + sans body, pill
-buttons, soft rounded cards, gold accents, navy type, one or two navy
-feature bands, lots of air, gentle 150–300ms transitions, SVG icons
-(Lucide).
-DON'T: dark page background, neon, large gold fills, pure-black text,
-emoji as icons, cramped sections, harsh/fast animations, busy gradients.
-
-## 8. Section Structure (from proven EV-installer layout)
-1. Nav — logo left, links, gold "Get a Quote" pill CTA right.
+## 8. Section Structure (smart-home flow, Orris-informed)
+1. Nav — logo left, links (Solutions, How It Works, Products, Projects,
+   Contact), gold "Book a consultation" CTA right.
 2. Hero — oversized serif headline, sub, primary + secondary CTA,
-   charger/clean-tech image bleeding off one side, faint gold glow.
-3. Trust strip — certification / credential badges (placeholder).
-4. Solutions — 3 cards: Home, Workplace, Commercial.
-5. How It Works — 4 steps: Enquire → Site assessment → Installation → Support.
-6. Products — 3–4 charger cards (image, name, AC/DC, spec, price-on-request).
-7. Stats / coverage — a NAVY feature band with big numbers + map (high impact).
-8. Partner / compatibility logo wall — greyscale logos on white.
-9. Why Us — 4–6 feature items with gold icons.
-10. Testimonials — 3 review cards (generic placeholder, NOT real reviews).
-11. Contact / quote form — name, email, phone, property-type dropdown, message.
-12. Footer — NAVY band: logo, nav links, contact, socials, copyright.
+   smart-home interior scene in a soft rounded container, faint gold glow.
+3. Trust strip — "Licensed, certified, insured" + credential badges.
+4. Solutions — 4 cards: Lighting, Security, Climate, Audio-Visual.
+5. How It Works — 4 steps: Consult → Design → Install & integrate →
+   Handover & support. Nature motif: steps along a subtle branch/line.
+6. Features grid (Orris "Intelligence in Every Detail" style) — a 2x3
+   grid of capability tiles (one app, voice/app control, scenes,
+   alerts, energy efficiency, unified control).
+7. Products / Brands — featured product cards AND/OR a brand logo wall.
+   Only brands EonTree is authorised for (placeholder, flagged).
+8. Stats band — NAVY band: big gold numbers + labels (high impact).
+9. Projects / Case Studies — 3 cards: brief → what we did → result.
+10. Testimonials — 3 review cards (placeholder, NOT real until sourced).
+11. Final CTA band — "Control your whole space from anywhere" + Book a
+    consultation. (Use instead of an app-download block unless EonTree
+    has an app.)
+12. Footer — NAVY band: logo, Company / Resources / Contact columns,
+    address, socials, copyright.
 
 ## 9. Responsive Behavior
-Breakpoints: 375 / 768 / 1024 / 1440. Touch targets ≥44px. Nav
-collapses to a hamburger menu under 768. Body text contrast ≥4.5:1 on
-all backgrounds. Hero image stacks below the headline on mobile; navy
-feature bands and card grids reflow to a single column. Maintain wide
-section padding by scaling it down gracefully (e.g. py-16 mobile,
-py-24 desktop).
+Breakpoints: 375 / 768 / 1024 / 1440. Touch targets >=44px. Nav
+collapses to hamburger under 768. Section padding tightens on mobile.
+Text contrast >=4.5:1. Use NAVY text on gold buttons (never small gold
+text on white).
 
-## 10. Logo & Assets
-Logos live in `public/` and are served from the site root.
-- `/logo-horizontal.png` — nav (use the version that reads on a white or
-  navy bar) and footer.
-- `/logo-mark.png` — favicon and compact/avatar placements.
-- Give the logo clear space; never stretch, recolor, or place gold-on-gold.
-- Visual reference for the target look: `references/aisun-reference.webp`
-  (light, airy clean-tech EV layout the design direction is based on).
+## 10. Agent Prompt Guide
+Build EonTree UI: white-dominant, airy, warm smart-home site. Orris-
+style layout/structure (whitespace, card grids, 2x3 feature grid, stat
+blocks, soft rounded scene containers, pill eyebrow tags) but with
+EonTree's warmth: navy #1C2C39 for type + a couple of bands, gold
+#E0B384 accent only (where Orris uses blue), serif headings, white +
+#F7F4EF bands, subtle nature motif. Copy comes from EonTree-copy.md.
+Logo: /logo-horizontal.png (nav + footer), /logo-mark.png (favicon).

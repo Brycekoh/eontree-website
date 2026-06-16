@@ -1,17 +1,53 @@
-# EonTree Technologies — Website
+# EonTree Technologies — Landing Page
 
-Marketing/company website for EonTree Technologies. Brand: "rooted in nature, powered by technology" — premium clean-tech corporate: light and white-dominant, with navy reserved for type, a couple of feature bands, and the footer, and gold used as an accent only.
+## Project
+Marketing landing page for EonTree Technologies, a smart-home company
+that designs, supplies, and installs full smart-home systems — lighting,
+security, climate, and audio-visual — for residential AND commercial
+spaces. EonTree resells and installs trusted third-party brands and
+supports them afterwards. The site sells the integration (one system,
+one app, one team), not just hardware.
+Tagline: "rooted in nature, powered by technology."
 
-Logos live in `public/` and are served at the site root: `/logo-horizontal.png` (nav/footer), `/logo-mark.png` (favicon).
+## Stack
+- React + Vite + Tailwind CSS
+- Single-page, mobile-first
+- Each section is its own component in src/components/
 
-## Design sources & precedence
+## Sources of truth
+- DESIGN.md — how it looks (read it fully before styling anything).
+- EonTree-copy.md — the real copy for every section (use it; honor its
+  "words to avoid" list; keep bracketed [PLACEHOLDER] facts visible and
+  do NOT invent numbers/brands/certifications).
 
-Three sources of design guidance exist in this repo and can disagree. Resolve conflicts in this order:
+## Visual vibe (summary — DESIGN.md is authoritative)
+White-dominant, airy, warm, premium. Layout/structure follows the Orris
+smart-home template (whitespace, clean card grids, a 2x3 feature grid,
+big-number stat blocks, soft rounded "scene" image containers, pill
+eyebrow tags). BUT brand stays warm: navy #1C2C39 for type + a couple of
+feature bands; gold #E0B384 accent only (where Orris uses blue); serif
+headings (not Orris's sans); white + warm off-white #F7F4EF bands (never
+cool grey); subtle nature motif. Orris's arrangement, EonTree's warmth.
 
-1. **`DESIGN.md` is the source of truth.** Its palette (white `#FFFFFF` dominant, navy `#1C2C39` for type/feature-bands/footer, gold `#E0B384` as accent only), typography (elegant serif headings + clean sans body), spacing scale, breakpoints, and "do/don't" rules are non-negotiable. When anything else suggests otherwise, DESIGN.md wins.
+## Brand colors (tailwind.config theme.extend.colors)
+- primary:      #1C2C39   (headings, nav, footer, dark bands)
+- primaryAlt:   #25333E   (dark surfaces, navy cards)
+- accent:       #E0B384   (buttons, links, icons, highlights)
+- accentBright: #F5C18A   (hover/active, glows)
+- pageBg:       #FFFFFF   (dominant page background)
+- neutralWarm:  #F7F4EF   (warm off-white bands)
+- neutralLine:  #E8E2D9   (hairlines, dividers, card borders)
+- textBody:     #3A4650   (body text on light)
 
-2. **`ui-ux-pro-max` skill is subordinate — use it for *how*, not *what color*.** Consult it for accessibility, interaction states, component/UX patterns, responsive behavior, and stack-specific tips. **Ignore its color, font, and style recommendations** — its `--design-system` search returns generic palettes (e.g. amber/purple for "dashboard") that conflict with the brand. If you query it for design direction, treat its UX rules as advice and discard its visual picks in favor of DESIGN.md. (Run its scripts with `python`, not `python3`, on this machine.)
+## Assets
+- /logo-horizontal.png — nav + footer (transparent gold-on-clear)
+- /logo-mark.png — favicon / compact spaces (transparent)
 
-3. **`frontend-design` skill is a craft lens applied *within* the brand.** Use its push for distinctive, non-templated execution to raise quality — but inside DESIGN.md's constraints, not as license to redesign the palette or pick a different aesthetic direction.
-
-One-liner: **DESIGN.md decides the look; the skills help execute it well and accessibly.**
+## Rules
+- Vary layouts; don't render every section as a centered row of equal
+  cards. Include asymmetry, a 2x3 feature grid, varied heights.
+- Placeholder images + dummy data clearly flagged for replacement.
+- Do NOT use real reviews, brands, certifications, or stats from any
+  competitor. Use our own placeholders.
+- In React, never use a raw <form> tag — use onClick handlers.
+- Respect prefers-reduced-motion when animations are added later.

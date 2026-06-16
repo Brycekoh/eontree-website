@@ -1,33 +1,34 @@
 import CurveDivider from './CurveDivider.jsx'
 import Leaf from './Leaf.jsx'
+import EyebrowPill from './EyebrowPill.jsx'
 
 // DESIGN.md §8.5 — four steps that flow along a growing branch rather than
 // sitting as four equal boxes. The order is a real sequence, so the numerals
-// carry meaning. TODO[COPY]: blurbs are placeholder.
+// carry meaning. Copy from EonTree-copy.md.
 const steps = [
   {
     n: '01',
-    title: 'You enquire',
+    title: 'We sit down with you',
     blurb:
-      'Tell us your address, your car, and where you’d like the charger. A quick call sorts out the rest.',
+      'Tell us what you want the space to do. We walk the property, look at your existing wiring and network, and figure out what’s realistic.',
   },
   {
     n: '02',
-    title: 'We assess the site',
+    title: 'We design the system',
     blurb:
-      'An electrician checks your board, your load, and the cable run — so the quote we give you is the price you pay.',
+      'You get a clear plan — what goes where, which brands, what it does, and what it costs. No surprises on install day.',
   },
   {
     n: '03',
-    title: 'We install',
+    title: 'We install and integrate',
     blurb:
-      'Usually a single visit. We mount the unit, run the wiring properly, test it, and tidy up after ourselves.',
+      'Our team fits everything and, the important part, makes it all talk to each other through one app. Tested before we leave.',
   },
   {
     n: '04',
-    title: 'We stick around',
+    title: 'We show you how, and stick around',
     blurb:
-      'Your charger’s covered by warranty, and if anything plays up, you call us — not a hotline in another country.',
+      'We walk you through it until it’s second nature, and we’re a call away if anything needs tuning or expanding later.',
   },
 ]
 
@@ -42,11 +43,9 @@ export default function HowItWorks() {
 
       <div className="mx-auto max-w-[1200px] px-6 pb-20 pt-24 sm:pb-28 sm:pt-32">
         <div className="max-w-2xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accentDeep">
-            What working with us looks like
-          </p>
-          <h2 className="mt-4 font-serif text-4xl text-primary sm:text-5xl">
-            Four steps, no surprises.
+          <EyebrowPill>What working with us looks like</EyebrowPill>
+          <h2 className="mt-5 font-serif text-4xl text-primary sm:text-5xl">
+            From idea to fully running, in four steps.
           </h2>
         </div>
 
