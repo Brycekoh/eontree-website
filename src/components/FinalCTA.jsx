@@ -2,12 +2,11 @@ import CurveDivider from './CurveDivider.jsx'
 import Leaf from './Leaf.jsx'
 
 // DESIGN.md §8.11 — final CTA band (navy). Heading per the brief; no app-
-// download block (EonTree has no app). Carries id="contact" so the nav
-// "Contact" link and every "Book a consultation" CTA resolve here until a
-// dedicated consultation form (EonTree-copy.md) is built.
+// download block (EonTree has no app). Its "Book a consultation" button points
+// to #contact (the consultation form just below).
 export default function FinalCTA() {
   return (
-    <section id="contact" className="relative overflow-hidden bg-primary">
+    <section className="relative overflow-hidden bg-primary">
       {/* neutralWarm (Testimonials above) spills down into navy */}
       <CurveDivider fill="#F7F4EF" />
 

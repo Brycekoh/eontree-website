@@ -1,19 +1,24 @@
-// DESIGN.md §8.7 — brand / compatibility logo wall (part of Products/Brands).
-// PENDING STEP 2: still EV-era content; the smart-home brand wall replaces this.
-// MUST-REPLACE: greyscale placeholder tiles — use only brand logos EonTree is
-// actually entitled to display.
+import CurveDivider from './CurveDivider.jsx'
+
+// DESIGN.md §8.7 — brand logo wall, paired with the Products brand cards.
+// MUST-REPLACE: greyscale placeholder tiles — show only brand logos EonTree is
+// actually authorised to install/resell. Heading/sub are composed (the copy
+// file gives one §7 heading, used by Products).
 const logos = Array.from({ length: 8 }, (_, i) => `[Logo ${i + 1}]`)
 
 export default function PartnerWall() {
   return (
-    <section className="bg-pageBg">
-      <div className="mx-auto max-w-[1200px] px-6 pb-16 pt-8 sm:pb-24">
+    <section className="relative overflow-hidden bg-pageBg">
+      {/* neutralWarm (Products above) spills down into white */}
+      <CurveDivider fill="#F7F4EF" />
+
+      <div className="mx-auto max-w-[1200px] px-6 pb-16 pt-24 sm:pb-24 sm:pt-32">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="font-serif text-4xl text-primary sm:text-5xl">
-            Works with every EV on the road.
+          <h2 className="font-serif text-3xl text-primary sm:text-4xl">
+            The brands behind the build.
           </h2>
           <p className="mt-4 text-lg text-textBody">
-            Whatever you drive, our chargers speak its language.
+            We only fit kit we’re trained and authorised to install and support.
           </p>
         </div>
 

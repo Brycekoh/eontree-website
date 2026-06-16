@@ -1,64 +1,76 @@
-import { House } from 'lucide-react'
-import EyebrowPill from './EyebrowPill.jsx'
+import { useState } from 'react'
+import { ArrowRight } from 'lucide-react'
 
-// DESIGN.md §8.2 — oversized serif H1, sans subhead, two CTAs, a warm
-// smart-home interior scene in a soft rounded container bleeding off the
-// right with a faint gold glow. White, airy.
+// Google Home-inspired opening: white nav above a full-bleed warm home video.
+// Asset: Mixkit "The sky above the houses of an English village" (4009),
+// saved locally as /hero-smart-home.mp4. Replace with EonTree-owned footage
+// when available.
 export default function Hero() {
+  const [videoReady, setVideoReady] = useState(false)
+
   return (
-    <section id="top" className="relative overflow-hidden bg-pageBg">
-      <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-12 px-6 py-20 md:py-28 lg:grid-cols-2">
-        {/* Left — copy */}
-        <div className="relative z-10">
-          <EyebrowPill>Smart home, properly installed</EyebrowPill>
+    <section id="top" className="relative bg-pageBg">
+      <div className="relative min-h-[calc(100vh-76px)] overflow-hidden sm:min-h-[calc(100vh-84px)]">
+        <video
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
+            videoReady ? 'opacity-100' : 'opacity-0'
+          }`}
+          src="/hero-smart-home.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-label="Warm home exterior video"
+          onCanPlay={() => setVideoReady(true)}
+          onError={() => setVideoReady(false)}
+        />
 
-          {/* Oversized serif H1 */}
-          <h1 className="mt-6 text-5xl leading-[1.05] text-primary sm:text-6xl">
-            Your whole home, working as one.
-          </h1>
-
-          {/* Sans subhead */}
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-textBody">
-            We design and install smart lighting, security, climate, and AV —
-            then set it up so it actually works together. One system, one app,
-            one team that looks after it.
-          </p>
-
-          {/* CTAs — primary gold pill + secondary navy outline */}
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-            <a
-              href="#contact"
-              className="inline-flex cursor-pointer items-center justify-center rounded-full bg-accent px-7 py-3.5 text-base font-semibold text-primary shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-accentBright hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
-            >
-              Book a consultation
-            </a>
-            <a
-              href="#solutions"
-              className="inline-flex cursor-pointer items-center justify-center rounded-full border border-primary px-7 py-3.5 text-base font-semibold text-primary transition-all duration-200 hover:bg-primary hover:text-pageBg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-            >
-              See what we install
-            </a>
-          </div>
+        {/* Warm illustrated fallback shown until the video can play. */}
+        <div
+          aria-label="Warm smart-home background fallback"
+          className={`absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(28,44,57,0.38),transparent_30%),linear-gradient(180deg,rgba(245,193,138,0.48)_0%,rgba(224,179,132,0.18)_36%,rgba(28,44,57,0.22)_100%),linear-gradient(135deg,#6f8a76_0%,#e7b37d_36%,#f2d7b5_52%,#6b7b67_100%)] transition-opacity duration-700 ${
+            videoReady ? 'opacity-0' : 'opacity-100'
+          }`}
+        >
+          <div className="absolute inset-x-0 bottom-0 h-[42%] bg-[linear-gradient(180deg,transparent_0%,rgba(28,44,57,0.26)_72%,rgba(28,44,57,0.34)_100%)]" />
+          <div className="absolute bottom-[18%] left-[12%] h-[30%] w-[46%] rounded-t-[2.6rem] bg-[#f6ead8]/78 shadow-[0_32px_80px_rgba(28,44,57,0.24)]" />
+          <div className="absolute bottom-[32%] left-[23%] h-[18%] w-[32%] -skew-x-12 rounded-t-[1.8rem] bg-[#4d574b]/54" />
+          <div className="absolute bottom-[18%] left-[18%] h-[15%] w-[7%] rounded-t-xl bg-primary/58" />
+          <div className="absolute bottom-[24%] left-[32%] h-[10%] w-[12%] rounded-2xl bg-primary/42" />
+          <div className="absolute bottom-[17%] left-0 h-[18%] w-[18%] rounded-tr-[8rem] bg-primary/42 blur-[1px]" />
+          <div className="absolute bottom-[15%] right-[7%] h-[24%] w-[21%] rounded-t-full bg-primary/34 blur-[1px]" />
+          <div className="absolute bottom-[8%] left-[8%] right-[8%] h-[12%] rounded-[100%] bg-[#5f725a]/44 blur-sm" />
         </div>
 
-        {/* Right — smart-home scene in a soft rounded container, bleeding right */}
-        <div className="relative">
-          {/* Faint gold glow (DESIGN.md §7 — keep subtle) */}
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-            <div className="absolute right-0 top-1/2 h-80 w-80 -translate-y-1/2 rounded-full bg-accent/25 blur-3xl" />
-          </div>
+        {/* Legibility scrim, concentrated where the headline sits. */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-[linear-gradient(90deg,rgba(28,44,57,0.72)_0%,rgba(28,44,57,0.5)_34%,rgba(28,44,57,0.13)_72%,rgba(28,44,57,0.05)_100%)]"
+        />
 
-          {/*
-            TODO[ASSET]: replace with a real, warm interior scene — a lit
-            living room / wall panel / sleek thermostat. Avoid cold gadget
-            stock. The negative right margin + section overflow-hidden makes
-            it bleed off the right edge per DESIGN.md §8.2.
-          */}
-          <div className="relative z-10 ml-auto flex aspect-[4/5] w-full max-w-sm items-center justify-center rounded-[2.5rem] border border-neutralLine bg-neutralWarm lg:mr-[-6rem]">
-            <div className="flex flex-col items-center gap-3 text-textBody/60">
-              <House size={56} className="text-accent" aria-hidden="true" />
-              <span className="text-sm font-medium uppercase tracking-wide">
-                Interior scene placeholder
+        <div className="relative mx-auto flex min-h-[calc(100vh-76px)] max-w-[1200px] items-end px-6 pb-16 pt-24 sm:min-h-[calc(100vh-84px)] sm:pb-20 lg:pb-24">
+          <div className="max-w-4xl">
+            <p className="mb-5 inline-flex rounded-full border border-white/30 bg-white/12 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/90 backdrop-blur">
+              Smart home, properly installed
+            </p>
+            <h1 className="max-w-[11ch] font-serif text-6xl leading-[0.98] text-white drop-shadow-[0_5px_26px_rgba(28,44,57,0.46)] sm:text-7xl lg:text-8xl">
+              Your whole home, working as one.
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/88 sm:text-xl">
+              We design and install smart lighting, security, climate, and AV,
+              then set it up so it actually works together.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <a
+                href="#contact"
+                className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 text-base font-semibold text-primary shadow-[0_16px_40px_rgba(28,44,57,0.26)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-accentBright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+              >
+                Book a consultation
+                <ArrowRight size={18} aria-hidden="true" />
+              </a>
+              <span className="text-sm font-medium text-white/78">
+                Video placeholder: replace with EonTree-owned project footage.
               </span>
             </div>
           </div>

@@ -6,10 +6,10 @@ import Leaf from './Leaf.jsx'
 // MUST-REPLACE: every figure here is a bracketed [PLACEHOLDER]. Fill with REAL
 // numbers — do not invent install counts. Labels are from website-copy.md.
 const stats = [
-  { value: '[X]+', label: 'chargers installed' },
-  { value: '[X]', label: 'days average from quote to install' },
+  { value: '[X]+', label: 'homes and sites fitted out' },
+  { value: '[X]', label: 'brands we install and support' },
   { value: '[X] yrs', label: 'workmanship warranty' },
-  { value: '[Region]', label: 'where we cover' },
+  { value: '[Region]', label: 'where we work' },
 ]
 
 export default function Stats() {
