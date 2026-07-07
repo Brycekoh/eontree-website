@@ -37,9 +37,9 @@ const columns = [
   {
     title: 'Contact',
     links: [
-      { label: '71 Ubi Road 1, #05-42, Singapore 408732', href: '#' },
-      { label: '+65 8123 4567', href: 'tel:+6581234567' },
-      { label: 'hello@eontree.sg', href: 'mailto:hello@eontree.sg' },
+      { label: '23, Jalan PJU 5/20, Kota Damansara, 47810 Petaling Jaya, Selangor', href: '#' },
+      { label: '+60 12-345 6789', href: 'tel:+60123456789' },
+      { label: 'hello@eontree.my', href: 'mailto:hello@eontree.my' },
     ],
   },
 ]
@@ -132,7 +132,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-2 border-t border-white/10 pt-6 text-sm text-neutralWarm/60 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {year} EonTree Technologies. EMA Licence #E123456</p>
+          <p>© {year} EonTree Technologies. ST Licence #K-123456</p>
           <p>rooted in nature, powered by technology</p>
         </div>
       </div>

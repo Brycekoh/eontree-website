@@ -5,8 +5,8 @@ import { ShieldCheck, BadgeCheck, FileCheck2, Umbrella } from 'lucide-react'
 // EonTree's genuine license number, partner certifications, and warranty
 // terms before any real launch.
 const badges = [
-  { icon: ShieldCheck, label: 'Licensed electrical / cabling contractor — EMA #E123456' },
-  { icon: BadgeCheck, label: 'Certified installer — Philips Hue & Aqara' },
+  { icon: ShieldCheck, label: 'Licensed electrical / cabling contractor — ST #K-123456' },
+  { icon: BadgeCheck, label: 'Certified installer — Philips Hue & Ring' },
   { icon: FileCheck2, label: 'Workmanship warranty — 2 years' },
   { icon: Umbrella, label: 'Fully insured' },
 ]

@@ -18,7 +18,7 @@ const products = [
   },
   {
     category: 'Security & cameras',
-    brand: 'Aqara',
+    brand: 'Ring',
     line: 'Cameras, sensors, smart locks, and alerts to your phone.',
     image: '/images/security.jpg',
     imageAlt: 'White wireless security camera mounted on an exterior wall',

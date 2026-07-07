@@ -9,7 +9,7 @@ const stats = [
   { value: '40+', label: 'homes and sites fitted out' },
   { value: '12', label: 'brands we install and support' },
   { value: '2 yrs', label: 'workmanship warranty' },
-  { value: 'SG-wide', label: 'where we work' },
+  { value: 'MY-wide', label: 'where we work' },
 ]
 
 export default function Stats() {
@@ -54,11 +54,11 @@ export default function Stats() {
               <Map size={28} aria-hidden="true" />
             </span>
             <p className="mt-5 font-serif text-2xl text-neutralWarm sm:text-3xl">
-              Island-wide, Singapore.
+              Nationwide, Malaysia.
             </p>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-neutralWarm/70">
-              Homes, offices, and holiday properties — from Woodlands to
-              Sentosa, we come to you.
+              Homes, offices, and holiday properties — from Penang to Johor
+              Bahru, we come to you.
             </p>
           </div>
         </div>
