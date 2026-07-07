@@ -1,36 +1,40 @@
-import { House, Building2, Plane } from 'lucide-react'
 import CurveDivider from './CurveDivider.jsx'
 import EyebrowPill from './EyebrowPill.jsx'
 
 // DESIGN.md §8.9 — case studies. Each card is structured brief → what we did
 // → result (not icon-blurb-link). Copy from EonTree-copy.md, decomposed from
 // each project's paragraph into the three stages (no facts invented).
-// TODO[ASSET]: project photos are placeholders. TODO[COPY]: replace with real
-// projects (with client sign-off) before launch — these are realistic samples.
+// TODO[COPY]: replace with real projects (with client sign-off) before
+// launch — these are realistic samples. Photos are free Unsplash stock
+// (Unsplash License) in /public/images — generic scenes, not real EonTree
+// installs; swap for real project photos when available.
 const projects = [
   {
-    icon: House,
     title: 'The whole-house retrofit',
     brief:
       'A family wanted lighting, security, and climate on one app without tearing the house apart.',
     did: 'We used wireless kit where we could, and ran cable only where it mattered.',
     result: 'One system that controls all three.',
+    image: '/images/project-home.jpg',
+    imageAlt: 'Bright family living room with fireplace and built-in shelving',
   },
   {
-    icon: Building2,
     title: 'The “it should just work” office',
     brief:
       'A small office was juggling four different apps for lights, locks, aircon, and meeting-room AV.',
     did: 'We consolidated it into one control system.',
     result: 'Reception runs the whole floor from a tablet.',
+    image: '/images/project-office.jpg',
+    imageAlt: 'Glass-walled office meeting room with a whiteboard and city view',
   },
   {
-    icon: Plane,
     title: 'The holiday home, run remotely',
     brief:
       'An owner two hours away wanted to check on an empty property and warm it up before arriving.',
     did: 'We set up remote cameras, climate, and alerts.',
     result: 'All from their phone, from anywhere.',
+    image: '/images/project-holiday.jpg',
+    imageAlt: 'Cabin in the woods glowing with warm lights at dusk',
   },
 ]
 
@@ -56,20 +60,18 @@ export default function Projects() {
 
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
           {projects.map((p) => {
-            const Icon = p.icon
             return (
               <article
                 key={p.title}
                 className="group flex flex-col overflow-hidden rounded-2xl border border-neutralLine bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
               >
-                {/* Scene image placeholder */}
-                <div className="flex aspect-[16/10] items-center justify-center bg-neutralWarm">
-                  <div className="flex flex-col items-center gap-2 text-textBody/40">
-                    <Icon size={36} aria-hidden="true" />
-                    <span className="text-xs uppercase tracking-wide">
-                      Project photo
-                    </span>
-                  </div>
+                <div className="aspect-[16/10] overflow-hidden bg-neutralWarm">
+                  <img
+                    src={p.image}
+                    alt={p.imageAlt}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                  />
                 </div>
 
                 {/* Brief → What we did → Result */}

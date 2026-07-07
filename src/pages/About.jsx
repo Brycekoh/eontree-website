@@ -107,24 +107,18 @@ export default function About() {
                 <div className="absolute -right-5 top-10 h-72 w-72 rounded-full bg-accent/20 blur-3xl" />
                 <Leaf className="leaf-breathe absolute -left-6 top-10 h-10 w-10 rotate-[-18deg] text-accent/55" />
               </div>
-              <figure className="relative w-full max-w-sm rounded-[2rem] border border-neutralLine bg-neutralWarm p-3 shadow-[0_28px_70px_-44px_rgba(28,44,57,0.55)]">
-                <div className="overflow-hidden rounded-[1.45rem] bg-pageBg">
-                  <img
-                    src="/founder/founder.jpeg"
-                    alt="Ching Yang, founder of EonTree Technologies"
-                    className="aspect-[3/4] w-full object-cover object-[50%_36%]"
-                  />
-                </div>
-                <figcaption className="flex items-center justify-between gap-4 px-2 pb-1 pt-4">
-                  <div>
-                    <p className="font-serif text-xl leading-none text-primary">
-                      Ching Yang
-                    </p>
-                    <p className="mt-1 text-sm text-textBody/75">
-                      Founder, EonTree Technologies
-                    </p>
-                  </div>
-                  <Leaf className="h-6 w-6 text-accent" />
+              <figure className="relative flex aspect-[3/4] w-full max-w-sm flex-col items-center justify-center gap-6 rounded-[2rem] border border-neutralLine bg-gradient-to-b from-neutralWarm to-pageBg p-8 text-center shadow-[0_28px_70px_-44px_rgba(28,44,57,0.55)]">
+                <Leaf className="h-12 w-12 text-accent" />
+                <blockquote className="font-serif text-2xl italic leading-snug text-primary">
+                  "Get the roots right and everything above looks after itself."
+                </blockquote>
+                <figcaption>
+                  <p className="font-serif text-xl leading-none text-primary">
+                    Ching Yang
+                  </p>
+                  <p className="mt-1 text-sm text-textBody/75">
+                    Founder, EonTree Technologies
+                  </p>
                 </figcaption>
               </figure>
             </Reveal>

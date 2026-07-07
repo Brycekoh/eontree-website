@@ -1,4 +1,4 @@
-import { Lightbulb, Camera, Thermometer, Tv, Cpu, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import CurveDivider from './CurveDivider.jsx'
 import EyebrowPill from './EyebrowPill.jsx'
 
@@ -6,36 +6,43 @@ import EyebrowPill from './EyebrowPill.jsx'
 // MUST-REPLACE: brand names are [BRAND PLACEHOLDER] — list only brands EonTree
 // is an authorised installer/reseller for. The one-line descriptions are
 // composed (the copy file gives category + brand slot only); flag/replace.
+// Images: free Unsplash stock (Unsplash License, commercial use OK) in
+// /public/images — generic category scenes, no competitor brands shown.
 const products = [
   {
-    icon: Lightbulb,
     category: 'Smart lighting',
     brand: '[BRAND PLACEHOLDER]',
     line: 'Scenes, dimming, and schedules — set once, used every day.',
+    image: '/images/lighting.jpg',
+    imageAlt: 'Warm filament pendant bulbs glowing in a brick-walled room',
   },
   {
-    icon: Camera,
     category: 'Security & cameras',
     brand: '[BRAND PLACEHOLDER]',
     line: 'Cameras, sensors, smart locks, and alerts to your phone.',
+    image: '/images/security.jpg',
+    imageAlt: 'White wireless security camera mounted on an exterior wall',
   },
   {
-    icon: Thermometer,
     category: 'Climate & sensors',
     brand: '[BRAND PLACEHOLDER]',
     line: 'Heating, cooling, and sensors that follow your routine.',
+    image: '/images/climate.jpg',
+    imageAlt: 'Modern black smart thermostat mounted on a wall',
   },
   {
-    icon: Tv,
     category: 'Audio-visual',
     brand: '[BRAND PLACEHOLDER]',
     line: 'Multi-room sound and a tidy TV setup, run from one remote.',
+    image: '/images/av.jpg',
+    imageAlt: 'Minimal living room with wall-mounted TV and floor-standing speaker',
   },
   {
-    icon: Cpu,
     category: 'Hubs & control',
     brand: '[BRAND PLACEHOLDER]',
     line: 'The hub that ties everything together into one system.',
+    image: '/images/hub.jpg',
+    imageAlt: 'Finger adjusting a smart control panel set into a wooden wall',
   },
 ]
 
@@ -54,20 +61,18 @@ export default function Products() {
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {products.map(({ icon: Icon, category, brand, line }) => (
+          {products.map(({ category, brand, line, image, imageAlt }) => (
             <article
               key={category}
               className="group flex flex-col overflow-hidden rounded-2xl border border-neutralLine bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
             >
-              {/* Product image placeholder */}
-              <div className="flex aspect-[16/10] items-center justify-center bg-neutralWarm">
-                {/* TODO[ASSET]: real product / brand photo */}
-                <div className="flex flex-col items-center gap-2 text-textBody/40">
-                  <Icon size={36} aria-hidden="true" />
-                  <span className="text-xs uppercase tracking-wide">
-                    Product image
-                  </span>
-                </div>
+              <div className="aspect-[16/10] overflow-hidden bg-neutralWarm">
+                <img
+                  src={image}
+                  alt={imageAlt}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                />
               </div>
 
               <div className="flex flex-1 flex-col p-6">
