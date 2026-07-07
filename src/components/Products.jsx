@@ -3,43 +3,43 @@ import CurveDivider from './CurveDivider.jsx'
 import EyebrowPill from './EyebrowPill.jsx'
 
 // DESIGN.md §8.7 — featured brand/category cards. Copy from EonTree-copy.md.
-// MUST-REPLACE: brand names are [BRAND PLACEHOLDER] — list only brands EonTree
-// is an authorised installer/reseller for. The one-line descriptions are
-// composed (the copy file gives category + brand slot only); flag/replace.
+// NOTE: sample brand names for this practice/demo build — swap for the
+// brands EonTree is actually authorised to install/resell before any real
+// launch. The one-line descriptions are composed.
 // Images: free Unsplash stock (Unsplash License, commercial use OK) in
 // /public/images — generic category scenes, no competitor brands shown.
 const products = [
   {
     category: 'Smart lighting',
-    brand: '[BRAND PLACEHOLDER]',
+    brand: 'Philips Hue',
     line: 'Scenes, dimming, and schedules — set once, used every day.',
     image: '/images/lighting.jpg',
     imageAlt: 'Warm filament pendant bulbs glowing in a brick-walled room',
   },
   {
     category: 'Security & cameras',
-    brand: '[BRAND PLACEHOLDER]',
+    brand: 'Aqara',
     line: 'Cameras, sensors, smart locks, and alerts to your phone.',
     image: '/images/security.jpg',
     imageAlt: 'White wireless security camera mounted on an exterior wall',
   },
   {
     category: 'Climate & sensors',
-    brand: '[BRAND PLACEHOLDER]',
+    brand: 'tado°',
     line: 'Heating, cooling, and sensors that follow your routine.',
     image: '/images/climate.jpg',
     imageAlt: 'Modern black smart thermostat mounted on a wall',
   },
   {
     category: 'Audio-visual',
-    brand: '[BRAND PLACEHOLDER]',
+    brand: 'Sonos',
     line: 'Multi-room sound and a tidy TV setup, run from one remote.',
     image: '/images/av.jpg',
     imageAlt: 'Minimal living room with wall-mounted TV and floor-standing speaker',
   },
   {
     category: 'Hubs & control',
-    brand: '[BRAND PLACEHOLDER]',
+    brand: 'Samsung SmartThings',
     line: 'The hub that ties everything together into one system.',
     image: '/images/hub.jpg',
     imageAlt: 'Finger adjusting a smart control panel set into a wooden wall',

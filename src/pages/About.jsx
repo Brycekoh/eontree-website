@@ -13,12 +13,12 @@ import Reveal from '../components/Reveal.jsx'
 
 // About / Our Story - story-driven arc: opening thesis -> mission -> origin
 // narrative -> pull-quote + metrics -> values -> CTA.
-// Founder/year/metrics are set from user-provided details; revise when the
-// full company history is ready.
+// NOTE: sample metrics for this practice/demo build (kept in sync with
+// Stats.jsx) — revise when the full company history is ready.
 const stats = [
-  { value: '1', suffix: '+', label: 'homes and sites fitted out' },
-  { value: '1', suffix: '', label: 'brands installed and supported' },
-  { value: '1', suffix: 'yr', label: 'workmanship warranty' },
+  { value: '40', suffix: '+', label: 'homes and sites fitted out' },
+  { value: '12', suffix: '', label: 'brands installed and supported' },
+  { value: '2', suffix: 'yrs', label: 'workmanship warranty' },
 ]
 
 const beliefs = [

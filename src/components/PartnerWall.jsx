@@ -1,10 +1,19 @@
 import CurveDivider from './CurveDivider.jsx'
 
 // DESIGN.md §8.7 — brand logo wall, paired with the Products brand cards.
-// MUST-REPLACE: greyscale placeholder tiles — show only brand logos EonTree is
-// actually authorised to install/resell. Heading/sub are composed (the copy
-// file gives one §7 heading, used by Products).
-const logos = Array.from({ length: 8 }, (_, i) => `[Logo ${i + 1}]`)
+// NOTE: sample brand wordmarks (styled text, no trademarked logo art) for
+// this practice/demo build — swap for real partner logos EonTree is
+// authorised to show before any real launch.
+const logos = [
+  'Philips Hue',
+  'Sonos',
+  'Aqara',
+  'tado°',
+  'SmartThings',
+  'Lutron',
+  'Yale',
+  'Ubiquiti',
+]
 
 export default function PartnerWall() {
   return (
@@ -26,7 +35,7 @@ export default function PartnerWall() {
           {logos.map((label) => (
             <li
               key={label}
-              className="flex h-20 items-center justify-center rounded-xl border border-neutralLine bg-white text-sm font-semibold uppercase tracking-wide text-textBody/40 grayscale transition-colors duration-200 hover:text-textBody/70"
+              className="flex h-20 items-center justify-center rounded-xl border border-neutralLine bg-white font-serif text-lg tracking-wide text-textBody/60 transition-colors duration-200 hover:text-primary"
             >
               {label}
             </li>

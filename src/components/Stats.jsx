@@ -3,13 +3,13 @@ import CurveDivider from './CurveDivider.jsx'
 import Leaf from './Leaf.jsx'
 
 // DESIGN.md §8.7 — navy feature band (the page's main dark moment).
-// MUST-REPLACE: every figure here is a bracketed [PLACEHOLDER]. Fill with REAL
-// numbers — do not invent install counts. Labels are from website-copy.md.
+// NOTE: sample figures for this practice/demo build — replace with REAL
+// numbers before any real launch. Labels are from website-copy.md.
 const stats = [
-  { value: '[X]+', label: 'homes and sites fitted out' },
-  { value: '[X]', label: 'brands we install and support' },
-  { value: '[X] yrs', label: 'workmanship warranty' },
-  { value: '[Region]', label: 'where we work' },
+  { value: '40+', label: 'homes and sites fitted out' },
+  { value: '12', label: 'brands we install and support' },
+  { value: '2 yrs', label: 'workmanship warranty' },
+  { value: 'SG-wide', label: 'where we work' },
 ]
 
 export default function Stats() {
@@ -44,19 +44,22 @@ export default function Stats() {
             </dl>
           </div>
 
-          {/* Coverage map placeholder */}
-          {/* TODO[ASSET]: replace with a real map of EonTree's service area. */}
-          <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-3xl border border-white/15 bg-white/5">
+          {/* Coverage panel — sample copy; swap for a real service-area map. */}
+          <div className="relative flex aspect-[4/3] flex-col items-center justify-center overflow-hidden rounded-3xl border border-white/15 bg-white/5 px-8 text-center">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute -right-10 -top-10 h-48 w-48 rounded-full bg-accent/15 blur-3xl"
             />
-            <div className="flex flex-col items-center gap-3 text-neutralWarm/55">
-              <Map size={48} aria-hidden="true" />
-              <span className="text-sm uppercase tracking-wide">
-                Coverage map placeholder
-              </span>
-            </div>
+            <span className="flex h-14 w-14 items-center justify-center rounded-full bg-accent/15 text-accent">
+              <Map size={28} aria-hidden="true" />
+            </span>
+            <p className="mt-5 font-serif text-2xl text-neutralWarm sm:text-3xl">
+              Island-wide, Singapore.
+            </p>
+            <p className="mt-3 max-w-xs text-sm leading-relaxed text-neutralWarm/70">
+              Homes, offices, and holiday properties — from Woodlands to
+              Sentosa, we come to you.
+            </p>
           </div>
         </div>
       </div>

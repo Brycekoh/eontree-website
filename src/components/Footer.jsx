@@ -3,9 +3,10 @@ import { Facebook, Instagram, Linkedin, Youtube } from 'lucide-react'
 import { scrollToId } from '../utils/scroll.js'
 
 // DESIGN.md §8.12 — navy footer. Columns from EonTree-copy.md.
-// MUST-REPLACE: contact details and the license number are [PLACEHOLDER];
-// fill with EonTree's real address / phone / email / license. Social links
-// and Careers/Resources point to # until real pages exist.
+// NOTE: sample contact details and license number for this practice/demo
+// build — fill with EonTree's real address / phone / email / license before
+// any real launch. Social links and Careers/Resources point to # until real
+// pages exist.
 const columns = [
   {
     title: 'Solutions',
@@ -36,9 +37,9 @@ const columns = [
   {
     title: 'Contact',
     links: [
-      { label: '[Address placeholder]', href: '#' },
-      { label: '[Phone placeholder]', href: '#' },
-      { label: '[Email placeholder]', href: '#' },
+      { label: '71 Ubi Road 1, #05-42, Singapore 408732', href: '#' },
+      { label: '+65 8123 4567', href: 'tel:+6581234567' },
+      { label: 'hello@eontree.sg', href: 'mailto:hello@eontree.sg' },
     ],
   },
 ]
@@ -131,7 +132,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-2 border-t border-white/10 pt-6 text-sm text-neutralWarm/60 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {year} EonTree Technologies. [License #PLACEHOLDER]</p>
+          <p>© {year} EonTree Technologies. EMA Licence #E123456</p>
           <p>rooted in nature, powered by technology</p>
         </div>
       </div>

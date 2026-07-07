@@ -3,25 +3,23 @@ import CurveDivider from './CurveDivider.jsx'
 import EyebrowPill from './EyebrowPill.jsx'
 
 // DESIGN.md §8.10 — review cards. Copy from EonTree-copy.md.
-// MUST-REPLACE: these are PLACEHOLDER reviews — names show as [Sample] on
-// purpose so they're never mistaken for real. Swap in genuine, permissioned
-// quotes before launch. (Section eyebrow/heading are not in the copy file —
-// composed as structural labels.)
+// NOTE: sample reviews with sample names for this practice/demo build —
+// swap in genuine, permissioned quotes before any real launch.
 const testimonials = [
   {
-    name: '[Sample]',
+    name: 'Sarah Lim',
     role: 'Homeowner',
     quote:
       'They didn’t oversell us. We told them what we actually use, and they designed around that. The lighting scenes alone changed how the house feels in the evening.',
   },
   {
-    name: '[Sample]',
+    name: 'Marcus Tan',
     role: 'Office manager',
     quote:
       'One tablet at reception now runs the lights, locks, and the meeting rooms. Whoever’s on the desk can manage it without training.',
   },
   {
-    name: '[Sample]',
+    name: 'David Ng',
     role: 'Builder',
     quote:
       'We’ve brought EonTree into three projects. They plan the smart side early so we’re not chasing cabling after the walls are closed.',

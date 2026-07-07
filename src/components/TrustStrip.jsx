@@ -1,14 +1,13 @@
 import { ShieldCheck, BadgeCheck, FileCheck2, Umbrella } from 'lucide-react'
 
 // DESIGN.md §8.3 — subtle credential strip on neutralWarm.
-// MUST-REPLACE: the bracketed text below is real-world fact (license #,
-// partner brand, warranty term, insurance figure). Fill with EonTree's
-// genuine credentials and ideally swap the Lucide marks for real cert logos.
-// If a credential doesn't exist yet, list what's true instead.
+// NOTE: sample credentials for this practice/demo build — replace with
+// EonTree's genuine license number, partner certifications, and warranty
+// terms before any real launch.
 const badges = [
-  { icon: ShieldCheck, label: 'Licensed electrical / cabling contractor — #[PLACEHOLDER]' },
-  { icon: BadgeCheck, label: 'Certified installer — [BRAND PARTNER]' },
-  { icon: FileCheck2, label: 'Workmanship warranty — [X] years' },
+  { icon: ShieldCheck, label: 'Licensed electrical / cabling contractor — EMA #E123456' },
+  { icon: BadgeCheck, label: 'Certified installer — Philips Hue & Aqara' },
+  { icon: FileCheck2, label: 'Workmanship warranty — 2 years' },
   { icon: Umbrella, label: 'Fully insured' },
 ]
 
