@@ -1,324 +1,237 @@
+import { Eyebrow, DevNote, GoldLink } from '../components/ui.jsx'
+import { scrollToId } from '../utils/scroll.js'
 import { useNavigate } from 'react-router-dom'
-import {
-  Layers,
-  Wrench,
-  LifeBuoy,
-  BadgeCheck,
-  ArrowRight,
-} from 'lucide-react'
-import EyebrowPill from '../components/EyebrowPill.jsx'
-import CurveDivider from '../components/CurveDivider.jsx'
-import Leaf from '../components/Leaf.jsx'
-import Reveal from '../components/Reveal.jsx'
 
-// About / Our Story - story-driven arc: opening thesis -> mission -> origin
-// narrative -> pull-quote + metrics -> values -> CTA.
-// NOTE: sample metrics for this practice/demo build (kept in sync with
-// Stats.jsx) — revise when the full company history is ready.
-const stats = [
-  { value: '40', suffix: '+', label: 'homes and sites fitted out' },
-  { value: '12', suffix: '', label: 'brands installed and supported' },
-  { value: '2', suffix: 'yrs', label: 'workmanship warranty' },
+// About / Our story. One measured column for the narrative, metrics back in
+// the serif/gold system, and no decorative vine pinned to pixel offsets.
+const story = [
+  'Ching Yang had bought the best of everything — smart lights, cameras, locks, a thermostat, speakers in every room. On paper, a smart home. In practice: a phone full of apps that didn’t talk to each other, two hubs that argued, and a light switch the family had learned never to touch.',
+  'The hardware was never the problem. Every piece worked fine on its own. What nobody had done was make them work as one — and nobody was on the hook when they didn’t.',
+  'So in 2026 we started EonTree to do the part most people skip: plan the whole system before buying a thing, run the wiring and network so the foundations are solid, tie it all into one app — then stay around to keep it running.',
+  'We named it EonTree on purpose. A tree is only as strong as its roots; get the foundations right and everything above looks after itself.',
+]
+
+const metrics = [
+  { value: '[X]', label: 'homes and sites fitted out' },
+  { value: '[X]', label: 'brands we install and support' },
+  { value: '[X] yrs', label: 'workmanship warranty' },
 ]
 
 const beliefs = [
   {
-    icon: Layers,
+    n: '01',
     title: 'We sell the system, not the gadget.',
-    line: 'A smart home is only as good as how the parts work together - so we plan the whole system first.',
+    line: 'A smart home is only as good as how the parts work together — so we plan the whole system first, before anything is bought.',
   },
   {
-    icon: Wrench,
+    n: '02',
     title: 'Real installers, start to finish.',
-    line: 'The people who design your system are the people who fit it. No subcontracted handoffs.',
+    line: 'The people who design your system are the people who fit it. No subcontracted handoffs, no one blaming the last team.',
   },
   {
-    icon: LifeBuoy,
+    n: '03',
     title: 'We stay after the install.',
     line: 'Warranty, monitoring, and a real person to call when something needs tuning or expanding.',
   },
   {
-    icon: BadgeCheck,
-    title: "Brands we'd use ourselves.",
-    line: "We only fit kit we're trained and authorised to install and support.",
+    n: '04',
+    title: 'Brands we’d use ourselves.',
+    line: 'We only fit kit we’re trained and authorised to install and support — so it’s us you call, not a helpline.',
   },
 ]
 
-function StoryThread() {
-  return (
-    <div
-      aria-hidden="true"
-      className="pointer-events-none absolute left-1/2 top-[32rem] z-0 hidden h-[62rem] w-[18rem] -translate-x-1/2 text-accent/35 lg:block"
-    >
-      <svg
-        viewBox="0 0 260 980"
-        fill="none"
-        className="h-full w-full overflow-visible"
-      >
-        <path
-          pathLength="1"
-          className="root-thread"
-          d="M132 8 C 70 155, 220 250, 124 382 C 48 486, 188 590, 96 704 C 44 770, 112 884, 70 962"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-        />
-        <path
-          className="leaf-breathe"
-          d="M119 238 C 94 220, 68 226, 54 250 C 80 262, 106 260, 119 238Z"
-          fill="currentColor"
-        />
-        <path
-          className="leaf-breathe"
-          style={{ animationDelay: '900ms' }}
-          d="M140 594 C 166 578, 192 588, 202 616 C 174 626, 151 618, 140 594Z"
-          fill="currentColor"
-        />
-      </svg>
-    </div>
-  )
-}
-
 export default function About() {
   const navigate = useNavigate()
-  const goContact = () => navigate('/', { state: { scrollTo: 'contact' } })
+  const goContact = (e) => {
+    e.preventDefault()
+    navigate('/', { state: { scrollTo: 'contact' } })
+  }
 
   return (
-    <main className="relative overflow-hidden">
-      <StoryThread />
-
-      {/* 1. Opening thesis */}
-      <section className="relative z-10 bg-pageBg">
-        <div className="mx-auto max-w-[1200px] px-6 pb-16 pt-20 sm:pb-24 sm:pt-28">
-          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1fr_0.82fr] lg:gap-16">
-            <Reveal>
-              <EyebrowPill>Our story</EyebrowPill>
-              <h1 className="mt-6 font-serif text-5xl leading-[1.04] text-primary sm:text-6xl">
-                Technology should fit your life, not run it.
-              </h1>
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-textBody">
-                EonTree designs, installs, and looks after smart-home systems for
-                homes and businesses. Here's why we do it the way we do.
-              </p>
-            </Reveal>
-
-            <Reveal variant="scale" delay={120} className="relative justify-self-center lg:justify-self-end">
-              <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-                <div className="absolute -right-5 top-10 h-72 w-72 rounded-full bg-accent/20 blur-3xl" />
-                <Leaf className="leaf-breathe absolute -left-6 top-10 h-10 w-10 rotate-[-18deg] text-accent/55" />
-              </div>
-              <figure className="relative flex aspect-[3/4] w-full max-w-sm flex-col items-center justify-center gap-6 rounded-[2rem] border border-neutralLine bg-gradient-to-b from-neutralWarm to-pageBg p-8 text-center shadow-[0_28px_70px_-44px_rgba(28,44,57,0.55)]">
-                <Leaf className="h-12 w-12 text-accent" />
-                <blockquote className="font-serif text-2xl italic leading-snug text-primary">
-                  "Get the roots right and everything above looks after itself."
-                </blockquote>
-                <figcaption>
-                  <p className="font-serif text-xl leading-none text-primary">
-                    Ching Yang
-                  </p>
-                  <p className="mt-1 text-sm text-textBody/75">
-                    Founder, EonTree Technologies
-                  </p>
-                </figcaption>
-              </figure>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* 2. Mission */}
-      <section className="relative z-10 overflow-hidden bg-neutralWarm">
-        <CurveDivider fill="#FFFFFF" />
-        <div className="mx-auto max-w-[1200px] px-6 pb-16 pt-24 text-center sm:pb-24 sm:pt-32">
-          <Reveal className="mx-auto max-w-3xl">
-            <EyebrowPill>Our mission</EyebrowPill>
-            <h2 className="mt-5 font-serif text-4xl leading-tight text-primary sm:text-5xl">
-              Smart homes that actually stay smart.
-            </h2>
-            <p className="mt-6 text-lg leading-relaxed text-textBody">
-              Not a drawer of half-working gadgets. One system that does what you
-              set it to, keeps doing it, and has a real team behind it when it
-              doesn't.
+    <main>
+      {/* 1. Opening */}
+      <section className="mx-auto max-w-content px-6 pt-[88px] sm:px-10">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-[72px]">
+          <div>
+            <Eyebrow>Our story</Eyebrow>
+            <h1 className="mt-5 max-w-[19ch] font-serif text-[38px] font-light leading-none tracking-[-0.025em] text-primary sm:text-[56px] lg:text-[78px]">
+              Technology should fit your life,{' '}
+              <em className="font-light italic">not run it.</em>
+            </h1>
+            <p className="mt-7 max-w-[46ch] text-pretty text-[17px] leading-[1.65] text-textBody sm:text-[19px]">
+              EonTree designs, installs, and looks after smart-home systems for homes
+              and businesses. Here’s why we do it the way we do.
             </p>
-          </Reveal>
+          </div>
+
+          {/* Founder portrait slot — awaiting a real photograph. */}
+          <figure className="relative mx-auto w-full max-w-[420px]">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -inset-y-[6%] -left-[4%] -right-[6%] rounded-[24px_24px_24px_96px] bg-[radial-gradient(circle_at_60%_40%,rgba(224,179,132,0.35),transparent_70%)] blur-lg"
+            />
+            <div className="relative flex aspect-[4/5] flex-col items-center justify-center gap-3 overflow-hidden rounded-[24px_24px_24px_96px] border border-neutralLine bg-[repeating-linear-gradient(135deg,#F7F4EF_0_10px,#F1ECE3_10px_20px)] px-8 text-center">
+              <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-accentDeep">
+                Founder portrait
+              </span>
+              <span className="max-w-[30ch] font-mono text-[10.5px] leading-[1.6] text-muted">
+                Ching Yang — waist-up, on a real install or in a finished room.
+                Natural light, warm tones, plain shirt. Drop file here.
+              </span>
+            </div>
+            <figcaption className="mt-5 px-1">
+              <span className="block font-serif text-[22px] leading-tight text-primary">
+                Ching Yang
+              </span>
+              <span className="mt-1 block text-[13.5px] text-textBody">
+                Founder, EonTree Technologies
+              </span>
+            </figcaption>
+          </figure>
         </div>
       </section>
 
-      {/* 3. Origin story */}
-      <section className="relative z-10 overflow-hidden bg-pageBg">
-        <CurveDivider fill="#F7F4EF" />
-        <div className="mx-auto max-w-[1200px] px-6 pb-16 pt-24 sm:pb-24 sm:pt-32">
-          <Reveal className="mx-auto max-w-3xl">
-            <EyebrowPill>How it started</EyebrowPill>
-            <h2 className="mt-5 font-serif text-4xl leading-tight text-primary sm:text-5xl">
-              It began with a house that wouldn't behave.
-            </h2>
-          </Reveal>
+      {/* 2. Story — one measured column */}
+      <section className="mx-auto max-w-content px-6 pt-24 sm:px-10 lg:pt-[104px]">
+        <div className="mx-auto max-w-[66ch]">
+          <Eyebrow>How it started</Eyebrow>
+          <h2 className="mt-5 font-serif text-[32px] font-light leading-[1.06] tracking-[-0.015em] text-primary sm:text-[42px] lg:text-[54px]">
+            It began with a house that wouldn’t behave.
+          </h2>
+          <div className="mt-8 flex flex-col gap-6">
+            {story.map((p) => (
+              <p
+                key={p.slice(0, 24)}
+                className="text-pretty text-[17px] leading-[1.68] text-textBody sm:text-[19px]"
+              >
+                {p}
+              </p>
+            ))}
+          </div>
+          <blockquote className="mt-10 border-l-2 border-accent pl-7">
+            <p className="font-serif text-[24px] font-light italic leading-[1.3] text-primary sm:text-[32px]">
+              Get the roots right and everything above looks after itself.
+            </p>
+          </blockquote>
+        </div>
+      </section>
 
-          <div className="mx-auto mt-8 max-w-3xl space-y-6 text-lg leading-relaxed text-textBody">
-            {[
-              "Ching Yang had bought the best of everything - smart lights, cameras, locks, a thermostat, speakers in every room. On paper, a smart home. In practice: a phone full of apps that didn't talk to each other, two hubs that argued, and a light switch the family had learned never to touch.",
-              "The hardware was never the problem. Every piece worked fine on its own. What nobody had done was make them work as one - and nobody was on the hook when they didn't.",
-              'So in 2026, we started EonTree to do the part most people skip: plan the whole system before buying a thing, run the wiring and network so the foundations are solid, tie it all into one app - then stay around to keep it running.',
-              'We named it EonTree on purpose. A tree is only as strong as its roots; get the foundations right and everything above looks after itself. Rooted in nature, powered by technology.',
-            ].map((text, index) => (
-              <Reveal as="p" key={text} delay={index * 90}>
-                {text}
-              </Reveal>
+      {/* 3. What we're built around */}
+      <section className="relative mt-28 overflow-hidden bg-primary">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute left-1/2 top-[-220px] h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(224,179,132,0.18),transparent_65%)]"
+        />
+        <div className="relative mx-auto grid max-w-content grid-cols-1 items-center gap-14 px-6 py-24 sm:px-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20 lg:py-[104px]">
+          <div>
+            <Eyebrow on="dark">What we’re built around</Eyebrow>
+            <blockquote className="mt-6">
+              <p className="max-w-[20ch] font-serif text-[34px] font-light leading-[1.05] tracking-[-0.02em] text-neutralWarm sm:text-[46px] lg:text-[62px]">
+                We sell the system, <em className="font-light italic">not the gadget.</em>
+              </p>
+            </blockquote>
+            <p className="mt-7 max-w-[44ch] text-pretty text-[17px] leading-[1.65] text-[rgba(247,244,239,0.82)] sm:text-lg">
+              A smart home is only as good as the parts you can’t see: the wiring, the
+              network, and the team behind it. That’s the work EonTree is built
+              around.
+            </p>
+          </div>
+
+          <dl className="flex flex-col border-t border-[rgba(247,244,239,0.16)]">
+            {metrics.map((m) => (
+              <div
+                key={m.label}
+                className="flex flex-wrap items-baseline gap-x-6 gap-y-1 border-b border-[rgba(247,244,239,0.16)] py-6"
+              >
+                <dd className="min-w-[132px] font-serif text-[34px] font-light leading-none text-accent sm:text-[46px]">
+                  {m.value}
+                </dd>
+                <dt className="text-[15px] leading-[1.5] text-[rgba(247,244,239,0.78)]">
+                  {m.label}
+                </dt>
+              </div>
+            ))}
+            <DevNote on="dark" className="mt-5 max-w-[46ch]">
+              figures bracketed until confirmed — the company started in 2026, so keep
+              the counts honest
+            </DevNote>
+          </dl>
+        </div>
+      </section>
+
+      {/* 4. Beliefs */}
+      <section className="mx-auto max-w-content px-6 pt-24 sm:px-10 lg:pt-[104px]">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+          <div>
+            <Eyebrow>How we work</Eyebrow>
+            <h2 className="mt-5 font-serif text-[32px] font-light leading-[1.06] tracking-[-0.015em] text-primary sm:text-[42px] lg:text-[54px]">
+              What we believe.
+            </h2>
+            <p className="mt-6 max-w-[32ch] text-pretty text-[17px] leading-[1.65] text-textBody">
+              The invisible parts matter most: wiring, network, handover, and support.
+              These are the roots we build around.
+            </p>
+          </div>
+
+          <div className="border-t border-neutralLine">
+            {beliefs.map((b) => (
+              <article
+                key={b.n}
+                className="grid grid-cols-1 gap-x-4 border-b border-neutralLine py-8 sm:grid-cols-[56px_1fr]"
+              >
+                <span className="font-serif text-[17px] text-accentDeep">{b.n}</span>
+                <div>
+                  <h3 className="max-w-[30ch] font-serif text-[24px] font-normal leading-[1.2] text-primary sm:text-[31px]">
+                    {b.title}
+                  </h3>
+                  <p className="mt-3 max-w-[56ch] text-pretty text-[16.5px] leading-[1.65] text-textBody">
+                    {b.line}
+                  </p>
+                </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 4. Pull-quote + metrics (the dark moment) */}
-      <section className="relative z-10 overflow-hidden bg-primary">
-        <CurveDivider fill="#FFFFFF" />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute left-1/2 top-1/2 h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/10 blur-3xl"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute left-1/2 top-[7.5rem] hidden h-px w-[38rem] -translate-x-1/2 bg-gradient-to-r from-transparent via-accent/35 to-transparent sm:block"
-        />
-        <div className="relative mx-auto max-w-[1200px] px-6 pb-16 pt-20 sm:pb-24 sm:pt-28">
-          <div className="mx-auto grid max-w-5xl grid-cols-1 items-center gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16">
-            <Reveal>
-              <Leaf className="mx-auto h-7 w-7 text-accent" />
-              <blockquote className="mt-6 font-serif text-3xl leading-snug text-neutralWarm sm:text-4xl lg:text-5xl">
-                "We sell the system, not the gadget."
-              </blockquote>
-              <p className="mt-6 max-w-2xl text-base leading-relaxed text-white sm:text-lg">
-                A smart home is only as good as the parts you can't see: the
-                wiring, the network, and the team behind it. That is the work
-                EonTree is built around.
-              </p>
-            </Reveal>
-
-            <Reveal delay={160}>
-              <dl className="relative grid grid-cols-1 gap-8 py-4 sm:grid-cols-3 lg:grid-cols-1">
-                <div
-                  aria-hidden="true"
-                  className="absolute left-3 top-0 hidden h-full w-px bg-gradient-to-b from-transparent via-accent/45 to-transparent lg:block"
-                />
-                {stats.map(({ value, suffix, label }, index) => (
-                  <div
-                    key={label}
-                    className="metric-rise relative pl-0 text-left lg:pl-10"
-                    style={{ '--metric-delay': `${index * 120}ms` }}
-                  >
-                    <span
-                      aria-hidden="true"
-                      className="absolute left-0 top-8 hidden h-3 w-3 -translate-x-[5px] rotate-45 rounded-bl-full rounded-tr-full bg-accent shadow-[0_0_24px_rgba(224,179,132,0.42)] lg:block"
-                    />
-                    <dd className="flex items-end gap-1 leading-none">
-                      <span className="bg-gradient-to-b from-accentBright via-accent to-[#B5793C] bg-clip-text font-sans text-6xl font-black tracking-[-0.08em] text-transparent drop-shadow-[0_8px_24px_rgba(224,179,132,0.22)] sm:text-7xl">
-                        {value}
-                      </span>
-                      {suffix && (
-                        <span className="pb-1 font-serif text-3xl font-semibold italic text-accentBright sm:text-4xl">
-                          {suffix}
-                        </span>
-                      )}
-                    </dd>
-                    <dt className="mt-2 text-sm font-medium leading-relaxed text-white">
-                      {label}
-                    </dt>
-                  </div>
-                ))}
-              </dl>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. What we believe */}
-      <section className="relative z-10 overflow-hidden bg-pageBg">
-        <CurveDivider fill="#1C2C39" />
-        <div className="mx-auto max-w-[1200px] px-6 pb-16 pt-24 sm:pb-24 sm:pt-32">
-          <div className="grid grid-cols-1 gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
-            <Reveal className="lg:sticky lg:top-28 lg:self-start">
-              <EyebrowPill>How we work</EyebrowPill>
-              <h2 className="mt-5 font-serif text-4xl leading-tight text-primary sm:text-5xl">
-                What we believe.
+      {/* 5. CTA */}
+      <section className="mt-28 bg-neutralWarm">
+        <div className="mx-auto max-w-content px-6 py-24 sm:px-10 lg:py-[104px]">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+            <div>
+              <h2 className="max-w-[24ch] font-serif text-[32px] font-light leading-[1.05] tracking-[-0.015em] text-primary sm:text-[44px] lg:text-[58px]">
+                Want to see what we’d do with your space?
               </h2>
-              <p className="mt-6 max-w-md text-lg leading-relaxed text-textBody">
-                The invisible parts matter most: wiring, network, handover, and
-                support. These are the roots we build around.
+              <p className="mt-6 max-w-[46ch] text-pretty text-[17px] leading-[1.65] text-textBody">
+                Tell us about the property and what you’re after, and we’ll come back
+                with a plan. No obligation, no hard sell.
               </p>
-              <div
-                aria-hidden="true"
-                className="mt-10 hidden h-40 w-32 text-accent/35 lg:block"
-              >
-                <svg viewBox="0 0 140 180" fill="none" className="h-full w-full">
-                  <path
-                    d="M72 4 C 46 44, 102 72, 62 112 C 42 132, 46 158, 28 176"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M67 74 C 45 60, 30 64, 22 84 C 43 92, 59 88, 67 74Z"
-                    fill="currentColor"
-                  />
-                  <path
-                    d="M72 126 C 94 112, 112 120, 118 142 C 94 148, 80 142, 72 126Z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </div>
-            </Reveal>
+            </div>
 
-            <div className="relative">
-              <div
-                aria-hidden="true"
-                className="absolute bottom-6 left-5 top-6 w-px bg-gradient-to-b from-transparent via-accent/35 to-transparent"
-              />
-              <div className="space-y-10">
-                {beliefs.map(({ icon: Icon, title, line }, index) => (
-                  <Reveal as="article" key={title} delay={index * 90}>
-                    <div className="group relative grid grid-cols-[2.75rem_1fr] gap-5">
-                      <span className="relative z-10 flex h-11 w-11 items-center justify-center rounded-[1rem] border border-accent/25 bg-pageBg text-accentDeep shadow-[0_14px_36px_-24px_rgba(28,44,57,0.55)] transition-transform duration-200 group-hover:-translate-y-0.5">
-                        <Icon size={22} aria-hidden="true" />
-                      </span>
-                      <div className="border-b border-neutralLine pb-9 transition-colors duration-200 group-hover:border-accent/45">
-                        <h3 className="font-serif text-2xl leading-tight text-primary">
-                          {title}
-                        </h3>
-                        <p className="mt-3 max-w-2xl text-base leading-relaxed text-textBody">
-                          {line}
-                        </p>
-                      </div>
-                    </div>
-                  </Reveal>
-                ))}
+            <div className="rounded-3xl border border-neutralLine bg-white p-8">
+              <GoldLink href="/#contact" onClick={goContact} className="w-full">
+                Book a consultation
+              </GoldLink>
+
+              <div className="my-7 flex items-center gap-4">
+                <span aria-hidden="true" className="h-px flex-1 bg-neutralLine" />
+                <span className="text-xs uppercase tracking-[0.16em] text-muted">
+                  or
+                </span>
+                <span aria-hidden="true" className="h-px flex-1 bg-neutralLine" />
               </div>
+
+              <p className="text-[11.5px] font-bold uppercase tracking-[0.16em] text-accentDeep">
+                Call us directly
+              </p>
+              <p className="mt-2 font-serif text-[28px] leading-tight text-muted">
+                [phone]
+              </p>
+              <p className="mt-2 text-[14.5px] leading-[1.55] text-textBody">
+                Business hours, a real person — not a queue.
+              </p>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* 6. CTA */}
-      <section className="relative z-10 overflow-hidden bg-neutralWarm">
-        <CurveDivider fill="#FFFFFF" />
-        <div className="relative mx-auto max-w-[1200px] px-6 pb-20 pt-24 text-center sm:pb-28 sm:pt-32">
-          <Reveal className="mx-auto flex max-w-2xl flex-col items-center">
-            <h2 className="font-serif text-4xl text-primary sm:text-5xl">
-              Want to see what we'd do with your space?
-            </h2>
-            <button
-              type="button"
-              onClick={goContact}
-              className="group mt-8 inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-gradient-to-b from-accentBright to-accent px-8 py-3.5 text-base font-semibold text-primary shadow-[0_14px_38px_-10px_rgba(224,179,132,0.6)] ring-1 ring-inset ring-white/40 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_20px_48px_-10px_rgba(224,179,132,0.75)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
-            >
-              Plan your space
-              <ArrowRight
-                size={18}
-                aria-hidden="true"
-                className="transition-transform duration-200 group-hover:translate-x-1"
-              />
-            </button>
-          </Reveal>
         </div>
       </section>
     </main>

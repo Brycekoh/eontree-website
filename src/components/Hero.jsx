@@ -1,80 +1,107 @@
 import { useState } from 'react'
-import { ArrowRight } from 'lucide-react'
+import { scrollToId } from '../utils/scroll.js'
 
-// Google Home-inspired opening: white nav above a full-bleed warm home video.
-// Asset: Mixkit "The sky above the houses of an English village" (4009),
-// saved locally as /hero-smart-home.mp4. Replace with EonTree-owned footage
-// when available.
+const facts = [
+  { value: '4', label: 'systems' },
+  { value: '1', label: 'app' },
+  { value: '1', label: 'team' },
+]
+
+// Full-bleed hero. The nav overlays this section, so there is no viewport
+// arithmetic to get wrong; 100svh keeps mobile browser chrome out of it.
 export default function Hero() {
-  const [videoReady, setVideoReady] = useState(false)
+  const [noVideo, setNoVideo] = useState(false)
+
+  const go = (e, id) => {
+    e.preventDefault()
+    scrollToId(id)
+  }
 
   return (
-    <section id="top" className="relative bg-pageBg">
-      <div className="relative min-h-[calc(100vh-76px)] overflow-hidden sm:min-h-[calc(100vh-84px)]">
+    <section
+      id="top"
+      className="relative h-[100svh] min-h-[640px] overflow-hidden bg-primary"
+    >
+      <img
+        src="/images/project-holiday.jpg"
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      {!noVideo && (
         <video
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
-            videoReady ? 'opacity-100' : 'opacity-0'
-          }`}
           src="/hero-smart-home.mp4"
+          poster="/images/project-holiday.jpg"
           autoPlay
           muted
           loop
           playsInline
           preload="metadata"
-          aria-label="Warm home exterior video"
-          onCanPlay={() => setVideoReady(true)}
-          onError={() => setVideoReady(false)}
+          aria-label="Warm home exterior at dusk"
+          onError={() => setNoVideo(true)}
+          className="absolute inset-0 h-full w-full object-cover"
         />
+      )}
+      {/* Light at the top so the footage reads, heavy at the bottom under type */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[linear-gradient(180deg,rgba(28,44,57,0.26)_0%,rgba(28,44,57,0.06)_34%,rgba(28,44,57,0.58)_76%,rgba(28,44,57,0.86)_100%)]"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[linear-gradient(90deg,rgba(28,44,57,0.3)_0%,rgba(28,44,57,0.06)_52%,transparent_100%)]"
+      />
 
-        {/* Warm illustrated fallback shown until the video can play. */}
-        <div
-          aria-label="Warm smart-home background fallback"
-          className={`absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(28,44,57,0.38),transparent_30%),linear-gradient(180deg,rgba(245,193,138,0.48)_0%,rgba(224,179,132,0.18)_36%,rgba(28,44,57,0.22)_100%),linear-gradient(135deg,#6f8a76_0%,#e7b37d_36%,#f2d7b5_52%,#6b7b67_100%)] transition-opacity duration-700 ${
-            videoReady ? 'opacity-0' : 'opacity-100'
-          }`}
-        >
-          <div className="absolute inset-x-0 bottom-0 h-[42%] bg-[linear-gradient(180deg,transparent_0%,rgba(28,44,57,0.26)_72%,rgba(28,44,57,0.34)_100%)]" />
-          <div className="absolute bottom-[18%] left-[12%] h-[30%] w-[46%] rounded-t-[2.6rem] bg-[#f6ead8]/78 shadow-[0_32px_80px_rgba(28,44,57,0.24)]" />
-          <div className="absolute bottom-[32%] left-[23%] h-[18%] w-[32%] -skew-x-12 rounded-t-[1.8rem] bg-[#4d574b]/54" />
-          <div className="absolute bottom-[18%] left-[18%] h-[15%] w-[7%] rounded-t-xl bg-primary/58" />
-          <div className="absolute bottom-[24%] left-[32%] h-[10%] w-[12%] rounded-2xl bg-primary/42" />
-          <div className="absolute bottom-[17%] left-0 h-[18%] w-[18%] rounded-tr-[8rem] bg-primary/42 blur-[1px]" />
-          <div className="absolute bottom-[15%] right-[7%] h-[24%] w-[21%] rounded-t-full bg-primary/34 blur-[1px]" />
-          <div className="absolute bottom-[8%] left-[8%] right-[8%] h-[12%] rounded-[100%] bg-[#5f725a]/44 blur-sm" />
+      <div className="relative mx-auto flex h-full max-w-content flex-col justify-end px-6 pt-[120px] sm:px-10">
+        <p className="mb-[26px] text-[11.5px] font-bold uppercase tracking-[0.22em] text-accent">
+          Smart home, properly installed
+        </p>
+        <h1 className="max-w-[20ch] text-balance font-serif text-[44px] font-light leading-[0.98] tracking-[-0.025em] text-white [text-shadow:0_2px_30px_rgba(28,44,57,0.35)] sm:text-[64px] lg:text-[92px]">
+          Your whole home, <em className="font-light italic">working as one.</em>
+        </h1>
+        <p className="mt-[30px] max-w-[52ch] text-pretty text-[17px] leading-[1.6] text-white/90 sm:text-[19px]">
+          We design and install smart lighting, security, climate, and AV — then set
+          it up so it actually works together. One system, one app, one team that
+          looks after it.
+        </p>
+
+        <div className="mt-[38px] flex flex-wrap items-center gap-3.5">
+          <a
+            href="#contact"
+            onClick={(e) => go(e, 'contact')}
+            className="inline-flex min-h-[54px] items-center whitespace-nowrap rounded-full bg-accent px-[30px] text-[15.5px] font-bold text-primary shadow-[0_16px_36px_-18px_rgba(0,0,0,0.6)] transition-colors duration-200 hover:bg-accentBright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+          >
+            Book a consultation
+          </a>
+          <a
+            href="#systems"
+            onClick={(e) => go(e, 'systems')}
+            className="inline-flex min-h-[54px] items-center whitespace-nowrap rounded-full border border-white/60 px-7 text-[15.5px] font-semibold text-white backdrop-blur-[4px] transition-colors duration-200 hover:bg-white hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+          >
+            See what we install
+          </a>
         </div>
 
-        {/* Legibility scrim, concentrated where the headline sits. */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-[linear-gradient(90deg,rgba(28,44,57,0.72)_0%,rgba(28,44,57,0.5)_34%,rgba(28,44,57,0.13)_72%,rgba(28,44,57,0.05)_100%)]"
-        />
-
-        <div className="relative mx-auto flex min-h-[calc(100vh-76px)] max-w-[1200px] items-end px-6 pb-16 pt-24 sm:min-h-[calc(100vh-84px)] sm:pb-20 lg:pb-24">
-          <div className="max-w-4xl">
-            <p className="mb-5 inline-flex rounded-full border border-white/30 bg-white/12 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/90 backdrop-blur">
-              Smart home, properly installed
-            </p>
-            <h1 className="max-w-[11ch] font-serif text-6xl leading-[0.98] text-white drop-shadow-[0_5px_26px_rgba(28,44,57,0.46)] sm:text-7xl lg:text-8xl">
-              Your whole home, working as one.
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/90 sm:text-xl">
-              We design and install smart lighting, security, climate, and AV,
-              then set it up so it actually works together.
-            </p>
-            <div className="mt-8">
-              <a
-                href="#contact"
-                className="group inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-gradient-to-b from-accentBright to-accent px-7 py-3.5 text-base font-semibold text-primary shadow-[0_14px_38px_-10px_rgba(224,179,132,0.7)] ring-1 ring-inset ring-white/40 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_20px_48px_-10px_rgba(224,179,132,0.85)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
-              >
-                Plan your space
-                <ArrowRight
-                  size={18}
-                  aria-hidden="true"
-                  className="transition-transform duration-200 group-hover:translate-x-1"
-                />
-              </a>
-            </div>
-          </div>
+        <div className="mt-14 flex flex-wrap items-center justify-between gap-10 border-t border-white/20 pb-[34px] pt-[22px]">
+          <ul className="flex flex-wrap items-baseline gap-x-11 gap-y-3">
+            {facts.map((f) => (
+              <li key={f.label} className="flex items-baseline gap-2.5">
+                <span className="font-serif text-[32px] leading-none text-accent">
+                  {f.value}
+                </span>
+                <span className="text-xs font-semibold uppercase tracking-[0.12em] text-white/70">
+                  {f.label}
+                </span>
+              </li>
+            ))}
+          </ul>
+          <span className="hidden items-center gap-2.5 text-[11.5px] font-semibold uppercase tracking-[0.16em] text-white/60 sm:flex">
+            Scroll
+            <span
+              aria-hidden="true"
+              className="block h-[26px] w-px animate-cue bg-white/50"
+            />
+          </span>
         </div>
       </div>
     </section>

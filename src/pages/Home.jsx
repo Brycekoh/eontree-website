@@ -1,22 +1,18 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import SectionNav from '../components/SectionNav.jsx'
 import Hero from '../components/Hero.jsx'
 import TrustStrip from '../components/TrustStrip.jsx'
-import Solutions from '../components/Solutions.jsx'
-import HowItWorks from '../components/HowItWorks.jsx'
-import Features from '../components/Features.jsx'
-import Products from '../components/Products.jsx'
-import PartnerWall from '../components/PartnerWall.jsx'
-import Stats from '../components/Stats.jsx'
-import Projects from '../components/Projects.jsx'
-import Testimonials from '../components/Testimonials.jsx'
-import FinalCTA from '../components/FinalCTA.jsx'
+import Systems from '../components/Systems.jsx'
+import OneApp from '../components/OneApp.jsx'
+import Process from '../components/Process.jsx'
+import Work from '../components/Work.jsx'
+import Brands from '../components/Brands.jsx'
 import Contact from '../components/Contact.jsx'
 import { scrollToId } from '../utils/scroll.js'
 
-// Homepage — all sections in DESIGN.md §8 order. When arrived at from another
-// page with a target section (nav state or #hash), scroll to it once mounted.
+// Homepage — eight sections: hero, trust, systems, one app, process, work,
+// brands, contact. Arriving from another page with a target section (nav state
+// or #hash) scrolls to it once mounted.
 export default function Home() {
   const location = useLocation()
 
@@ -29,22 +25,15 @@ export default function Home() {
   }, [location])
 
   return (
-    <>
-      <SectionNav />
-      <main>
-        <Hero />
-        <TrustStrip />
-        <Solutions />
-        <HowItWorks />
-        <Features />
-        <Products />
-        <PartnerWall />
-        <Stats />
-        <Projects />
-        <Testimonials />
-        <FinalCTA />
-        <Contact />
-      </main>
-    </>
+    <main>
+      <Hero />
+      <TrustStrip />
+      <Systems />
+      <OneApp />
+      <Process />
+      <Work />
+      <Brands />
+      <Contact />
+    </main>
   )
 }
