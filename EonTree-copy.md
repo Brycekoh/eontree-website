@@ -26,12 +26,16 @@
 ## HERO
 **Eyebrow:** Smart home, properly installed
 
-**H1:** Your whole home, working as one.
+**H1:** A smart home that actually works.
+
+> Revised 2026-08-19 at the owner's request; the previous line was
+> "Your whole home, working as one." The subhead below was reworded at
+> the same time to avoid repeating "actually works" directly under it.
 
 **Subhead:**
 We design and install smart lighting, security, climate, and AV — then
-set it up so it actually works together. One system, one app, one team
-that looks after it.
+set them up to work together, not just side by side. One system, one
+app, one team that looks after it.
 
 **Primary CTA:** Book a consultation
 **Secondary CTA:** See what we install

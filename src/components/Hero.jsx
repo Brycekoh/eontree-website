@@ -57,12 +57,12 @@ export default function Hero() {
           Smart home, properly installed
         </p>
         <h1 className="max-w-[20ch] text-balance font-serif text-[44px] font-light leading-[0.98] tracking-[-0.025em] text-white [text-shadow:0_2px_30px_rgba(28,44,57,0.35)] sm:text-[64px] lg:text-[92px]">
-          Your whole home, <em className="font-light italic">working as one.</em>
+          A smart home that <em className="font-light italic">actually works.</em>
         </h1>
         <p className="mt-[30px] max-w-[52ch] text-pretty text-[17px] leading-[1.6] text-white/90 sm:text-[19px]">
           We design and install smart lighting, security, climate, and AV — then set
-          it up so it actually works together. One system, one app, one team that
-          looks after it.
+          them up to work together, not just side by side. One system, one app, one
+          team that looks after it.
         </p>
 
         <div className="mt-[38px] flex flex-wrap items-center gap-3.5">
