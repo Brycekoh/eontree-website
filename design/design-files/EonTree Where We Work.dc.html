@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #FFFFFF; color: #3A4650; font-family: Manrope, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #8A5A1E; text-decoration: none; }
+  a:hover { color: #1C2C39; }
+  * { box-sizing: border-box; }
+</style>
+</helmet>
+
+<div style="width:100%; overflow-x:hidden">
+
+<header style="position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.94); backdrop-filter:blur(10px); border-bottom:1px solid #E8E2D9">
+  <nav style="max-width:1240px; margin:0 auto; padding:14px 40px; display:flex; align-items:center; justify-content:space-between; gap:40px">
+    <a href="EonTree Homepage.dc.html" style="display:flex; align-items:center; flex-shrink:0"><img src="public/logo-horizontal.png" alt="EonTree Technologies" style="height:46px; width:auto; display:block"></a>
+    <ul style="display:flex; align-items:center; gap:30px; list-style:none; margin:0; padding:0">
+      <sc-for list="{{ navGroups }}" as="g" hint-placeholder-count="4">
+        <li style="position:relative; white-space:nowrap" onMouseEnter="{{ g.open }}" onMouseLeave="{{ closeMenu }}">
+          <a href="{{ g.href }}" style="display:inline-flex; align-items:center; gap:7px; font-size:14.5px; font-weight:500; white-space:nowrap; color:{{ g.color }}" style-hover="color:#8A5A1E">{{ g.label }}<span style="font-size:8.5px; line-height:1; transform:translateY(1px)">{{ g.caret }}</span></a>
+          <div style="position:absolute; top:100%; left:-20px; padding-top:16px; display:{{ g.display }}">
+            <div style="min-width:288px; background:#FFFFFF; border:1px solid #E8E2D9; border-radius:16px; padding:10px; box-shadow:0 28px 64px -32px rgba(28,44,57,0.45)">
+              <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="4">
+                <a href="{{ it.href }}" style="display:block; padding:11px 14px; border-radius:10px; color:#1C2C39; white-space:normal" style-hover="background:#F7F4EF; color:#8A5A1E">
+                  <span style="display:block; font-size:14px; font-weight:600; line-height:1.3">{{ it.label }}</span>
+                  <span style="display:block; margin-top:3px; font-size:12.5px; line-height:1.45; color:#3A4650">{{ it.hint }}</span>
+                </a>
+              </sc-for>
+            </div>
+          </div>
+        </li>
+      </sc-for>
+    </ul>
+    <a href="EonTree Homepage.dc.html#contact" style="flex-shrink:0; display:inline-flex; align-items:center; min-height:44px; padding:0 28px; white-space:nowrap; border-radius:999px; background:#E0B384; color:#1C2C39; font-size:14.5px; font-weight:700; box-shadow:0 8px 20px -12px rgba(28,44,57,0.5)" style-hover="background:#F5C18A; color:#1C2C39">Book a consultation</a>
+  </nav>
+</header>
+
+<section style="max-width:1240px; margin:0 auto; padding:88px 40px 0">
+  <div style="display:grid; grid-template-columns:1.15fr 0.85fr; gap:72px; align-items:end">
+    <div>
+      <p style="margin:0 0 26px; font-size:11.5px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#8A5A1E">Service areas</p>
+      <h1 style="margin:0; max-width:20ch; font-family:Newsreader, Georgia, serif; font-weight:300; font-size:78px; line-height:1.0; letter-spacing:-0.025em; color:#1C2C39">Where we work, <em style="font-style:italic; font-weight:300">and how far we go.</em></h1>
+    </div>
+    <p style="margin:0 0 8px; font-size:18px; line-height:1.65; color:#3A4650; text-wrap:pretty">Support is only real if we can get to you. So rather than claiming the whole country, here’s where we’re genuinely quick — and where we’ll still come for the right project.</p>
+  </div>
+</section>
+
+<section style="max-width:1240px; margin:0 auto; padding:72px 40px 0">
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:stretch">
+    <sc-for list="{{ zones }}" as="z" hint-placeholder-count="2">
+      <article style="display:flex; flex-direction:column; border:1px solid {{ z.border }}; background:{{ z.bg }}; border-radius:24px; padding:38px 36px 34px">
+        <div style="display:flex; align-items:center; gap:12px">
+          <span style="width:9px; height:9px; border-radius:50%; background:{{ z.dot }}; display:block"></span>
+          <span style="font-size:11.5px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:{{ z.eyebrow }}">{{ z.kicker }}</span>
+        </div>
+        <h2 style="margin:18px 0 0; font-family:Newsreader, Georgia, serif; font-weight:400; font-size:34px; line-height:1.1; color:{{ z.fg }}">{{ z.title }}</h2>
+        <p style="margin:16px 0 0; max-width:40ch; font-size:16.5px; line-height:1.62; color:{{ z.muted }}; text-wrap:pretty">{{ z.line }}</p>
+        <ul style="margin:28px 0 0; padding:0; list-style:none; display:flex; flex-wrap:wrap; gap:8px">
+          <sc-for list="{{ z.places }}" as="p" hint-placeholder-count="8">
+            <li style="font-size:13.5px; font-weight:600; color:{{ z.chipFg }}; background:{{ z.chipBg }}; border:1px solid {{ z.chipBorder }}; border-radius:999px; padding:8px 15px">{{ p }}</li>
+          </sc-for>
+        </ul>
+        <div style="margin:auto 0 0; padding-top:30px; display:flex; flex-direction:column; gap:10px; border-top:1px solid {{ z.rule }}">
+          <sc-for list="{{ z.facts }}" as="f" hint-placeholder-count="2">
+            <div style="display:flex; justify-content:space-between; gap:20px; padding-top:8px">
+              <span style="font-size:14.5px; color:{{ z.muted }}">{{ f.label }}</span>
+              <span style="font-size:14.5px; font-weight:600; text-align:right; color:{{ z.fg }}">{{ f.value }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+  <p style="margin:24px 0 0; font-family:monospace; font-size:11px; line-height:1.6; color:#9AA3AA">confirm the real coverage list and travel terms before publishing — and a proper service-area map would strengthen this page</p>
+</section>
+
+<section style="margin-top:96px; background:#F7F4EF">
+  <div style="max-width:1240px; margin:0 auto; padding:88px 40px">
+    <div style="display:grid; grid-template-columns:0.85fr 1.15fr; gap:80px; align-items:start">
+      <div>
+        <p style="margin:0 0 20px; font-size:11.5px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#8A5A1E">Being straight about it</p>
+        <h2 style="margin:0; max-width:18ch; font-family:Newsreader, Georgia, serif; font-weight:300; font-size:52px; line-height:1.04; letter-spacing:-0.02em; color:#1C2C39">What distance actually changes.</h2>
+      </div>
+      <div style="display:flex; flex-direction:column; border-top:1px solid #E8E2D9">
+        <sc-for list="{{ notes }}" as="n" hint-placeholder-count="3">
+          <div style="display:grid; grid-template-columns:56px 1fr; gap:24px; padding:30px 0; border-bottom:1px solid #E8E2D9">
+            <span style="font-family:Newsreader, Georgia, serif; font-size:17px; line-height:1.55; color:#8A5A1E">{{ n.n }}</span>
+            <div>
+              <h3 style="margin:0; font-family:Newsreader, Georgia, serif; font-weight:400; font-size:27px; line-height:1.2; color:#1C2C39">{{ n.title }}</h3>
+              <p style="margin:12px 0 0; max-width:54ch; font-size:16px; line-height:1.62; color:#3A4650; text-wrap:pretty">{{ n.line }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="margin-top:96px; background:#1C2C39">
+  <div style="max-width:1240px; margin:0 auto; padding:88px 40px; display:grid; grid-template-columns:1.1fr 0.9fr; gap:72px; align-items:center">
+    <div>
+      <h2 style="margin:0; max-width:22ch; font-family:Newsreader, Georgia, serif; font-weight:300; font-size:54px; line-height:1.04; letter-spacing:-0.02em; color:#F7F4EF">Not sure if you’re in range?</h2>
+      <p style="margin:24px 0 0; max-width:42ch; font-size:18px; line-height:1.65; color:rgba(247,244,239,0.82); text-wrap:pretty">Send us the postcode. If we can’t look after you properly from where we are, we’ll say so — and point you at someone who can.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:14px">
+      <a href="EonTree Homepage.dc.html#contact" style="display:inline-flex; align-items:center; justify-content:center; min-height:54px; padding:0 28px; white-space:nowrap; border-radius:999px; background:#E0B384; color:#1C2C39; font-size:15.5px; font-weight:700" style-hover="background:#F5C18A; color:#1C2C39">Check your address</a>
+      <a href="EonTree Support.dc.html" style="display:inline-flex; align-items:center; justify-content:center; min-height:54px; padding:0 28px; white-space:nowrap; border-radius:999px; border:1px solid rgba(247,244,239,0.4); color:#F7F4EF; font-size:15.5px; font-weight:600" style-hover="background:#F7F4EF; color:#1C2C39">See response times</a>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#25333E; border-top:1px solid rgba(247,244,239,0.12)">
+  <div style="max-width:1240px; margin:0 auto; padding:64px 40px 40px; display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:48px">
+    <div>
+      <img src="public/logo-horizontal.png" alt="EonTree Technologies" style="height:44px; width:auto; display:block">
+      <p style="margin:22px 0 0; max-width:30ch; font-family:Newsreader, Georgia, serif; font-style:italic; font-size:18px; line-height:1.5; color:rgba(247,244,239,0.7)">Rooted in nature, powered by technology.</p>
+    </div>
+    <sc-for list="{{ footerCols }}" as="col" hint-placeholder-count="3">
+      <div>
+        <div style="font-size:11.5px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#E0B384">{{ col.title }}</div>
+        <ul style="margin:18px 0 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:11px">
+          <sc-for list="{{ col.items }}" as="it" hint-placeholder-count="4">
+            <li style="font-size:14.5px; line-height:1.45"><a href="{{ it.href }}" style="color:{{ it.color }}" style-hover="color:#E0B384">{{ it.label }}</a></li>
+          </sc-for>
+        </ul>
+      </div>
+    </sc-for>
+  </div>
+  <div style="max-width:1240px; margin:0 auto; padding:24px 40px 44px; border-top:1px solid rgba(247,244,239,0.12); display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap">
+    <span style="font-size:13px; color:rgba(247,244,239,0.55)">© 2026 EonTree Technologies. <span style="color:rgba(247,244,239,0.4)">[License #PLACEHOLDER]</span></span>
+    <a href="EonTree Privacy.dc.html" style="font-size:13px; color:rgba(247,244,239,0.55)" style-hover="color:#E0B384">Privacy notice</a>
+  </div>
+</footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { menu: null };
+
+  chrome(active) {
+    const home = 'EonTree Homepage.dc.html';
+    return {
+      closeMenu: () => this.setState({ menu: null }),
+      navGroups: [
+        { label: 'Systems', href: home + '#systems', items: [
+          { label: 'Lighting', hint: 'Scenes, dimming, occupancy', href: home + '#systems' },
+          { label: 'Security', hint: 'Cameras, locks, alerts', href: home + '#systems' },
+          { label: 'Climate', hint: 'Heating, cooling, blinds', href: home + '#systems' },
+          { label: 'Audio-Visual', hint: 'Multi-room sound and TV', href: home + '#systems' },
+          { label: 'How it all connects', hint: 'Four apps become one', href: home + '#oneapp' },
+        ] },
+        { label: 'Pricing', href: 'EonTree Pricing.dc.html', items: [] },
+        { label: 'Work', href: home + '#work', items: [
+          { label: 'Recent projects', hint: 'Three homes and an office', href: home + '#work' },
+          { label: 'Full case study', hint: 'The whole-house retrofit, in detail', href: 'EonTree Case Study.dc.html' },
+          { label: 'Brands we install', hint: 'What we’re authorised for', href: home + '#brands' },
+        ] },
+        { label: 'Support', href: 'EonTree Support.dc.html', items: [
+          { label: 'After the install', hint: 'Warranty, response times, expansion', href: 'EonTree Support.dc.html' },
+          { label: 'Where we work', hint: 'Service areas and travel', href: 'EonTree Where We Work.dc.html' },
+          { label: 'Questions', hint: 'Rewiring, existing kit, moving house', href: 'EonTree FAQ.dc.html' },
+          { label: 'Our story', hint: 'Why EonTree exists', href: 'EonTree About.dc.html' },
+        ] },
+      ].map((g) => ({
+        label: g.label,
+        href: g.href,
+        items: g.items,
+        caret: g.items.length ? '▾' : '',
+        color: g.label === active ? '#8A5A1E' : '#1C2C39',
+        display: this.state.menu === g.label && g.items.length ? 'block' : 'none',
+        open: () => this.setState({ menu: g.label }),
+      })),
+      footerCols: [
+        { title: 'Systems', items: [
+          { label: 'Lighting', href: home + '#systems' },
+          { label: 'Security', href: home + '#systems' },
+          { label: 'Climate', href: home + '#systems' },
+          { label: 'Audio-Visual', href: home + '#systems' },
+        ] },
+        { title: 'Company', items: [
+          { label: 'Our story', href: 'EonTree About.dc.html' },
+          { label: 'Pricing', href: 'EonTree Pricing.dc.html' },
+          { label: 'Case study', href: 'EonTree Case Study.dc.html' },
+          { label: 'Where we work', href: 'EonTree Where We Work.dc.html' },
+        ] },
+        { title: 'Support', items: [
+          { label: 'After the install', href: 'EonTree Support.dc.html' },
+          { label: 'Questions', href: 'EonTree FAQ.dc.html' },
+          { label: 'Book a consultation', href: home + '#contact' },
+          { label: '[phone]', href: '' },
+        ] },
+      ].map((c) => ({
+        title: c.title,
+        items: c.items.map((it) => ({
+          ...it,
+          color: it.href ? 'rgba(247,244,239,0.78)' : 'rgba(247,244,239,0.42)',
+        })),
+      })),
+    };
+  }
+
+  renderVals() {
+    return {
+      ...this.chrome('Support'),
+      zones: [
+        {
+          kicker: 'Core coverage', title: 'Klang Valley', dot: '#E0B384', eyebrow: '#8A5A1E',
+          border: '#1C2C39', bg: '#1C2C39', fg: '#F7F4EF', muted: 'rgba(247,244,239,0.78)',
+          rule: 'rgba(247,244,239,0.16)', chipBg: 'rgba(247,244,239,0.08)', chipFg: '#F7F4EF', chipBorder: 'rgba(247,244,239,0.18)',
+          line: 'Where we’re based, and where we can be on site quickly. Same response times, no travel charge.',
+          places: ['Petaling Jaya', 'Kuala Lumpur', 'Damansara', 'Subang Jaya', 'Shah Alam', 'Puchong', 'Cyberjaya', 'Klang'],
+          facts: [
+            { label: 'Response', value: 'Standard times apply' },
+            { label: 'Travel charge', value: 'None' },
+          ],
+        },
+        {
+          kicker: 'By arrangement', title: 'Wider Malaysia', dot: '#8A5A1E', eyebrow: '#8A5A1E',
+          border: '#E8E2D9', bg: '#FFFFFF', fg: '#1C2C39', muted: '#3A4650',
+          rule: '#E8E2D9', chipBg: '#F7F4EF', chipFg: '#1C2C39', chipBorder: '#E8E2D9',
+          line: 'We travel for whole-property projects — usually new builds, holiday homes, and commercial sites.',
+          places: ['Penang', 'Johor Bahru', 'Melaka', 'Ipoh', 'Seremban', 'Kuantan'],
+          facts: [
+            { label: 'Minimum project size', value: '[X]' },
+            { label: 'Travel', value: 'Quoted up front' },
+          ],
+        },
+      ],
+      notes: [
+        { n: '01', title: 'Response times, not promises', line: 'Inside the Klang Valley we can be at a property the same day when something is genuinely down. Further out, the honest answer is next-day — so we lean harder on remote diagnosis and design the system to fail gracefully.' },
+        { n: '02', title: 'Travel is quoted, never hidden', line: 'If a job needs us outside our core area, travel is a line on the quote you can see before you agree to anything. It never appears afterwards as an extra.' },
+        { n: '03', title: 'We’d rather turn work down', line: 'If a property is too far for us to support properly, taking the install would be doing you a disservice. We’ll tell you at the consultation, not after.' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

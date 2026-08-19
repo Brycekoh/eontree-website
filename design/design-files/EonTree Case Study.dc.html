@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #FFFFFF; color: #3A4650; font-family: Manrope, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #8A5A1E; text-decoration: none; }
+  a:hover { color: #1C2C39; }
+  * { box-sizing: border-box; }
+</style>
+</helmet>
+
+<div style="width:100%; overflow-x:hidden">
+
+<header style="position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.94); backdrop-filter:blur(10px); border-bottom:1px solid #E8E2D9">
+  <nav style="max-width:1240px; margin:0 auto; padding:14px 40px; display:flex; align-items:center; justify-content:space-between; gap:40px">
+    <a href="EonTree Homepage.dc.html" style="display:flex; align-items:center; flex-shrink:0"><img src="public/logo-horizontal.png" alt="EonTree Technologies" style="height:46px; width:auto; display:block"></a>
+    <ul style="display:flex; align-items:center; gap:30px; list-style:none; margin:0; padding:0">
+      <sc-for list="{{ navGroups }}" as="g" hint-placeholder-count="4">
+        <li style="position:relative; white-space:nowrap" onMouseEnter="{{ g.open }}" onMouseLeave="{{ closeMenu }}">
+          <a href="{{ g.href }}" style="display:inline-flex; align-items:center; gap:7px; font-size:14.5px; font-weight:500; white-space:nowrap; color:{{ g.color }}" style-hover="color:#8A5A1E">{{ g.label }}<span style="font-size:8.5px; line-height:1; transform:translateY(1px)">{{ g.caret }}</span></a>
+          <div style="position:absolute; top:100%; left:-20px; padding-top:16px; display:{{ g.display }}">
+            <div style="min-width:288px; background:#FFFFFF; border:1px solid #E8E2D9; border-radius:16px; padding:10px; box-shadow:0 28px 64px -32px rgba(28,44,57,0.45)">
+              <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="4">
+                <a href="{{ it.href }}" style="display:block; padding:11px 14px; border-radius:10px; color:#1C2C39; white-space:normal" style-hover="background:#F7F4EF; color:#8A5A1E">
+                  <span style="display:block; font-size:14px; font-weight:600; line-height:1.3">{{ it.label }}</span>
+                  <span style="display:block; margin-top:3px; font-size:12.5px; line-height:1.45; color:#3A4650">{{ it.hint }}</span>
+                </a>
+              </sc-for>
+            </div>
+          </div>
+        </li>
+      </sc-for>
+    </ul>
+    <a href="EonTree Homepage.dc.html#contact" style="flex-shrink:0; display:inline-flex; align-items:center; min-height:44px; padding:0 28px; white-space:nowrap; border-radius:999px; background:#E0B384; color:#1C2C39; font-size:14.5px; font-weight:700; box-shadow:0 8px 20px -12px rgba(28,44,57,0.5)" style-hover="background:#F5C18A; color:#1C2C39">Book a consultation</a>
+  </nav>
+</header>
+
+<section style="max-width:1240px; margin:0 auto; padding:80px 40px 0">
+  <p style="margin:0 0 26px; font-size:11.5px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#8A5A1E">Case study · Whole-house retrofit</p>
+  <h1 style="margin:0; max-width:22ch; font-family:Newsreader, Georgia, serif; font-weight:300; font-size:80px; line-height:0.99; letter-spacing:-0.025em; color:#1C2C39">Three systems, one app, <em style="font-style:italic; font-weight:300">no walls opened.</em></h1>
+  <div style="margin-top:48px; border-radius:28px; overflow:hidden; aspect-ratio:21/9; background:#F7F4EF">
+    <img src="public/images/project-home.jpg" alt="Bright family living room with fireplace and built-in shelving" style="width:100%; height:100%; object-fit:cover; display:block">
+  </div>
+  <dl style="margin:0; display:grid; grid-template-columns:repeat(4, 1fr); gap:32px; border-bottom:1px solid #E8E2D9; padding:34px 0">
+    <sc-for list="{{ facts }}" as="f" hint-placeholder-count="4">
+      <div>
+        <dt style="font-size:11px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#8A5A1E">{{ f.label }}</dt>
+        <dd style="margin:10px 0 0; font-family:Newsreader, Georgia, serif; font-size:26px; line-height:1.2; color:#1C2C39">{{ f.value }}</dd>
+      </div>
+    </sc-for>
+  </dl>
+</section>
+
+<section style="max-width:1240px; margin:0 auto; padding:80px 40px 0">
+  <div style="display:grid; grid-template-columns:0.42fr 1.58fr; gap:72px; align-items:start">
+    <div style="position:sticky; top:120px">
+      <div style="font-size:11.5px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#8A5A1E">The short version</div>
+      <p style="margin:16px 0 0; font-size:16px; line-height:1.65; color:#3A4650; text-wrap:pretty">A family wanted lighting, security, and climate on one app without tearing the house apart. Wireless where possible, cable only where it mattered.</p>
+      <a href="EonTree Homepage.dc.html#contact" style="margin-top:26px; display:inline-flex; align-items:center; min-height:48px; padding:0 22px; white-space:nowrap; border-radius:999px; border:1px solid #1C2C39; color:#1C2C39; font-size:14.5px; font-weight:600" style-hover="background:#1C2C39; color:#FFFFFF">Discuss a similar job</a>
+    </div>
+    <div style="max-width:68ch">
+      <sc-for list="{{ chapters }}" as="c" hint-placeholder-count="4">
+        <div style="padding-bottom:52px">
+          <h2 style="margin:0; font-family:Newsreader, Georgia, serif; font-weight:400; font-size:38px; line-height:1.1; letter-spacing:-0.015em; color:#1C2C39">{{ c.title }}</h2>
+          <sc-for list="{{ c.paras }}" as="p" hint-placeholder-count="2">
+            <p style="margin:22px 0 0; font-size:18.5px; line-height:1.68; color:#3A4650; text-wrap:pretty">{{ p }}</p>
+          </sc-for>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section style="margin-top:32px; background:#1C2C39">
+  <div style="max-width:1240px; margin:0 auto; padding:88px 40px">
+    <div style="display:grid; grid-template-columns:1.15fr 0.85fr; gap:72px; align-items:center">
+      <div>
+        <p style="margin:0 0 22px; font-size:11.5px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#E0B384">What the client said</p>
+        <blockquote style="margin:0">
+          <p style="margin:0; max-width:30ch; font-family:Newsreader, Georgia, serif; font-style:italic; font-weight:300; font-size:44px; line-height:1.18; letter-spacing:-0.015em; color:#F7F4EF">The lighting scenes alone changed how the house feels in the evening.</p>
+        </blockquote>
+        <p style="margin:28px 0 0; font-size:15px; color:rgba(247,244,239,0.7)">Homeowner · <span style="color:rgba(247,244,239,0.45)">[sample quote — replace with a permissioned one]</span></p>
+      </div>
+      <dl style="margin:0; display:flex; flex-direction:column; border-top:1px solid rgba(247,244,239,0.16)">
+        <sc-for list="{{ outcomes }}" as="o" hint-placeholder-count="3">
+          <div style="display:flex; align-items:baseline; justify-content:space-between; gap:24px; padding:22px 0; border-bottom:1px solid rgba(247,244,239,0.16)">
+            <dt style="font-size:15px; line-height:1.5; color:rgba(247,244,239,0.78)">{{ o.label }}</dt>
+            <dd style="margin:0; font-family:Newsreader, Georgia, serif; font-weight:300; font-size:32px; line-height:1; color:#E0B384; white-space:nowrap">{{ o.value }}</dd>
+          </div>
+        </sc-for>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section style="max-width:1240px; margin:0 auto; padding:88px 40px 0">
+  <div style="display:flex; align-items:end; justify-content:space-between; gap:40px; margin-bottom:32px">
+    <h2 style="margin:0; max-width:20ch; font-family:Newsreader, Georgia, serif; font-weight:300; font-size:46px; line-height:1.06; letter-spacing:-0.02em; color:#1C2C39">What went in.</h2>
+    <p style="margin:0; font-family:monospace; font-size:11px; line-height:1.6; color:#9AA3AA; max-width:28ch">stock scenes — swap for photos of this actual install</p>
+  </div>
+  <div style="display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:20px">
+    <sc-for list="{{ shots }}" as="s" hint-placeholder-count="3">
+      <figure style="margin:0">
+        <div style="border-radius:20px; overflow:hidden; aspect-ratio:{{ s.ratio }}; background:#F7F4EF">
+          <img src="{{ s.src }}" alt="{{ s.alt }}" style="width:100%; height:100%; object-fit:cover; display:block">
+        </div>
+        <figcaption style="margin-top:14px; font-size:14.5px; line-height:1.55; color:#3A4650">{{ s.caption }}</figcaption>
+      </figure>
+    </sc-for>
+  </div>
+  <div style="margin-top:44px; border-top:1px solid #E8E2D9; padding-top:34px; display:grid; grid-template-columns:repeat(3, 1fr); gap:32px">
+    <sc-for list="{{ kit }}" as="k" hint-placeholder-count="3">
+      <div>
+        <div style="font-size:11px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#8A5A1E">{{ k.system }}</div>
+        <p style="margin:12px 0 0; font-size:16px; line-height:1.6; color:#3A4650; text-wrap:pretty">{{ k.detail }}</p>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section style="margin-top:96px; background:#F7F4EF">
+  <div style="max-width:1240px; margin:0 auto; padding:88px 40px; display:grid; grid-template-columns:1.1fr 0.9fr; gap:72px; align-items:center">
+    <div>
+      <h2 style="margin:0; max-width:22ch; font-family:Newsreader, Georgia, serif; font-weight:300; font-size:54px; line-height:1.04; letter-spacing:-0.02em; color:#1C2C39">Got a house that needs the same treatment?</h2>
+      <p style="margin:24px 0 0; max-width:42ch; font-size:18px; line-height:1.65; color:#3A4650; text-wrap:pretty">The survey and the plan are free. You’ll know what it costs and how long it takes before anything is ordered.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:14px">
+      <a href="EonTree Homepage.dc.html#contact" style="display:inline-flex; align-items:center; justify-content:center; min-height:54px; padding:0 28px; white-space:nowrap; border-radius:999px; background:#E0B384; color:#1C2C39; font-size:15.5px; font-weight:700" style-hover="background:#F5C18A; color:#1C2C39">Book a consultation</a>
+      <a href="EonTree Pricing.dc.html" style="display:inline-flex; align-items:center; justify-content:center; min-height:54px; padding:0 28px; white-space:nowrap; border-radius:999px; border:1px solid #1C2C39; color:#1C2C39; font-size:15.5px; font-weight:600" style-hover="background:#1C2C39; color:#FFFFFF">See starting prices</a>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#25333E; border-top:1px solid rgba(247,244,239,0.12)">
+  <div style="max-width:1240px; margin:0 auto; padding:64px 40px 40px; display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:48px">
+    <div>
+      <img src="public/logo-horizontal.png" alt="EonTree Technologies" style="height:44px; width:auto; display:block">
+      <p style="margin:22px 0 0; max-width:30ch; font-family:Newsreader, Georgia, serif; font-style:italic; font-size:18px; line-height:1.5; color:rgba(247,244,239,0.7)">Rooted in nature, powered by technology.</p>
+    </div>
+    <sc-for list="{{ footerCols }}" as="col" hint-placeholder-count="3">
+      <div>
+        <div style="font-size:11.5px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#E0B384">{{ col.title }}</div>
+        <ul style="margin:18px 0 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:11px">
+          <sc-for list="{{ col.items }}" as="it" hint-placeholder-count="4">
+            <li style="font-size:14.5px; line-height:1.45"><a href="{{ it.href }}" style="color:{{ it.color }}" style-hover="color:#E0B384">{{ it.label }}</a></li>
+          </sc-for>
+        </ul>
+      </div>
+    </sc-for>
+  </div>
+  <div style="max-width:1240px; margin:0 auto; padding:24px 40px 44px; border-top:1px solid rgba(247,244,239,0.12); display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap">
+    <span style="font-size:13px; color:rgba(247,244,239,0.55)">© 2026 EonTree Technologies. <span style="color:rgba(247,244,239,0.4)">[License #PLACEHOLDER]</span></span>
+    <a href="EonTree Privacy.dc.html" style="font-size:13px; color:rgba(247,244,239,0.55)" style-hover="color:#E0B384">Privacy notice</a>
+  </div>
+</footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { menu: null };
+
+  chrome(active) {
+    const home = 'EonTree Homepage.dc.html';
+    return {
+      closeMenu: () => this.setState({ menu: null }),
+      navGroups: [
+        { label: 'Systems', href: home + '#systems', items: [
+          { label: 'Lighting', hint: 'Scenes, dimming, occupancy', href: home + '#systems' },
+          { label: 'Security', hint: 'Cameras, locks, alerts', href: home + '#systems' },
+          { label: 'Climate', hint: 'Heating, cooling, blinds', href: home + '#systems' },
+          { label: 'Audio-Visual', hint: 'Multi-room sound and TV', href: home + '#systems' },
+          { label: 'How it all connects', hint: 'Four apps become one', href: home + '#oneapp' },
+        ] },
+        { label: 'Pricing', href: 'EonTree Pricing.dc.html', items: [] },
+        { label: 'Work', href: home + '#work', items: [
+          { label: 'Recent projects', hint: 'Three homes and an office', href: home + '#work' },
+          { label: 'Full case study', hint: 'The whole-house retrofit, in detail', href: 'EonTree Case Study.dc.html' },
+          { label: 'Brands we install', hint: 'What we’re authorised for', href: home + '#brands' },
+        ] },
+        { label: 'Support', href: 'EonTree Support.dc.html', items: [
+          { label: 'After the install', hint: 'Warranty, response times, expansion', href: 'EonTree Support.dc.html' },
+          { label: 'Where we work', hint: 'Service areas and travel', href: 'EonTree Where We Work.dc.html' },
+          { label: 'Questions', hint: 'Rewiring, existing kit, moving house', href: 'EonTree FAQ.dc.html' },
+          { label: 'Our story', hint: 'Why EonTree exists', href: 'EonTree About.dc.html' },
+        ] },
+      ].map((g) => ({
+        label: g.label,
+        href: g.href,
+        items: g.items,
+        caret: g.items.length ? '▾' : '',
+        color: g.label === active ? '#8A5A1E' : '#1C2C39',
+        display: this.state.menu === g.label && g.items.length ? 'block' : 'none',
+        open: () => this.setState({ menu: g.label }),
+      })),
+      footerCols: [
+        { title: 'Systems', items: [
+          { label: 'Lighting', href: home + '#systems' },
+          { label: 'Security', href: home + '#systems' },
+          { label: 'Climate', href: home + '#systems' },
+          { label: 'Audio-Visual', href: home + '#systems' },
+        ] },
+        { title: 'Company', items: [
+          { label: 'Our story', href: 'EonTree About.dc.html' },
+          { label: 'Pricing', href: 'EonTree Pricing.dc.html' },
+          { label: 'Case study', href: 'EonTree Case Study.dc.html' },
+          { label: 'Where we work', href: 'EonTree Where We Work.dc.html' },
+        ] },
+        { title: 'Support', items: [
+          { label: 'After the install', href: 'EonTree Support.dc.html' },
+          { label: 'Questions', href: 'EonTree FAQ.dc.html' },
+          { label: 'Book a consultation', href: home + '#contact' },
+          { label: '[phone]', href: '' },
+        ] },
+      ].map((c) => ({
+        title: c.title,
+        items: c.items.map((it) => ({
+          ...it,
+          color: it.href ? 'rgba(247,244,239,0.78)' : 'rgba(247,244,239,0.42)',
+        })),
+      })),
+    };
+  }
+
+  renderVals() {
+    return {
+      ...this.chrome('Work'),
+      facts: [
+        { label: 'Property', value: '[X]-bed family home' },
+        { label: 'Systems', value: 'Lighting · Security · Climate' },
+        { label: 'Time on site', value: '[X] days' },
+        { label: 'Project cost', value: 'RM [X]' },
+      ],
+      chapters: [
+        { title: 'The brief', paras: [
+          'The family had lived in the house for years and had picked up smart devices one at a time — a couple of lamps here, a doorbell there, a thermostat someone had installed badly. Each piece worked. Together they didn’t.',
+          'What they asked for was simple to say and harder to deliver: lighting, security, and climate on one app, with no major building work, and nothing that would need a manual to operate.',
+        ] },
+        { title: 'What we found on the survey', paras: [
+          'Two hubs quietly competing, a router in a cupboard doing more work than it could manage, and no cabling anywhere near where the cameras needed to go. The wi-fi didn’t reach the far bedroom, which explained why half the existing devices dropped out at night.',
+          'The network was the real problem. Anything we added on top of it would have inherited the same faults, so fixing that came first — before a single new device was specified.',
+        ] },
+        { title: 'What we did', paras: [
+          'We replaced the network with proper access points, then ran cable only to the three places that genuinely needed it: two exterior camera positions and the hallway panel. Everything else went wireless, which kept the walls intact and the cost down.',
+          'Lighting was zoned room by room, then grouped into four scenes the family actually described to us in the consultation — morning, evening, movie, and away. Security and climate came onto the same system, so away mode locks up, arms the cameras, and drops the temperature in one action.',
+          'We tested it for a full day and night cycle before handover, then spent an evening walking the whole household through it — including the two teenagers, who were the real test.',
+        ] },
+        { title: 'Where it landed', paras: [
+          'One app, four scenes, and every switch in the house still works as a switch. Nine months on we’ve been back twice: once to add a camera, once to change a scene after they rearranged the living room.',
+        ] },
+      ],
+      outcomes: [
+        { label: 'Apps replaced by one', value: '4 → 1' },
+        { label: 'Rooms brought onto the system', value: '[X]' },
+        { label: 'Walls opened', value: 'None' },
+        { label: 'Callouts since handover', value: '2' },
+      ],
+      shots: [
+        { src: 'public/images/lighting.jpg', ratio: '4/3', alt: 'Living room in a warm evening lighting scene', caption: 'Evening scene — zoned per room, one tap.' },
+        { src: 'public/images/hub.jpg', ratio: '3/4', alt: 'Wall-mounted control panel in a hallway', caption: 'Hallway panel, the only cabled interior run.' },
+        { src: 'public/images/security.jpg', ratio: '3/4', alt: 'Exterior camera mounted above a doorway', caption: 'Two exterior camera positions, hard-wired.' },
+      ],
+      kit: [
+        { system: 'Lighting', detail: 'Zoned dimming across [X] rooms, four scenes, occupancy sensing in the hallway and utility.' },
+        { system: 'Security', detail: 'Two exterior cameras, smart lock on the front door, contact sensors on ground-floor windows.' },
+        { system: 'Climate', detail: 'Zoned control upstairs and down, tied to the away scene and the family’s schedule.' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

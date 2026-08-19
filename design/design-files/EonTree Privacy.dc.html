@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #FFFFFF; color: #3A4650; font-family: Manrope, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #8A5A1E; text-decoration: none; }
+  a:hover { color: #1C2C39; }
+  * { box-sizing: border-box; }
+</style>
+</helmet>
+
+<div style="width:100%; overflow-x:hidden">
+
+<header style="position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.94); backdrop-filter:blur(10px); border-bottom:1px solid #E8E2D9">
+  <nav style="max-width:1240px; margin:0 auto; padding:14px 40px; display:flex; align-items:center; justify-content:space-between; gap:40px">
+    <a href="EonTree Homepage.dc.html" style="display:flex; align-items:center; flex-shrink:0"><img src="public/logo-horizontal.png" alt="EonTree Technologies" style="height:46px; width:auto; display:block"></a>
+    <ul style="display:flex; align-items:center; gap:30px; list-style:none; margin:0; padding:0">
+      <sc-for list="{{ navGroups }}" as="g" hint-placeholder-count="4">
+        <li style="position:relative; white-space:nowrap" onMouseEnter="{{ g.open }}" onMouseLeave="{{ closeMenu }}">
+          <a href="{{ g.href }}" style="display:inline-flex; align-items:center; gap:7px; font-size:14.5px; font-weight:500; white-space:nowrap; color:{{ g.color }}" style-hover="color:#8A5A1E">{{ g.label }}<span style="font-size:8.5px; line-height:1; transform:translateY(1px)">{{ g.caret }}</span></a>
+          <div style="position:absolute; top:100%; left:-20px; padding-top:16px; display:{{ g.display }}">
+            <div style="min-width:288px; background:#FFFFFF; border:1px solid #E8E2D9; border-radius:16px; padding:10px; box-shadow:0 28px 64px -32px rgba(28,44,57,0.45)">
+              <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="4">
+                <a href="{{ it.href }}" style="display:block; padding:11px 14px; border-radius:10px; color:#1C2C39; white-space:normal" style-hover="background:#F7F4EF; color:#8A5A1E">
+                  <span style="display:block; font-size:14px; font-weight:600; line-height:1.3">{{ it.label }}</span>
+                  <span style="display:block; margin-top:3px; font-size:12.5px; line-height:1.45; color:#3A4650">{{ it.hint }}</span>
+                </a>
+              </sc-for>
+            </div>
+          </div>
+        </li>
+      </sc-for>
+    </ul>
+    <a href="EonTree Homepage.dc.html#contact" style="flex-shrink:0; display:inline-flex; align-items:center; min-height:44px; padding:0 28px; white-space:nowrap; border-radius:999px; background:#E0B384; color:#1C2C39; font-size:14.5px; font-weight:700; box-shadow:0 8px 20px -12px rgba(28,44,57,0.5)" style-hover="background:#F5C18A; color:#1C2C39">Book a consultation</a>
+  </nav>
+</header>
+
+<section style="max-width:1240px; margin:0 auto; padding:80px 40px 0">
+  <div style="max-width:68ch">
+    <p style="margin:0 0 24px; font-size:11.5px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#8A5A1E">Legal</p>
+    <h1 style="margin:0; font-family:Newsreader, Georgia, serif; font-weight:300; font-size:66px; line-height:1.02; letter-spacing:-0.025em; color:#1C2C39">Privacy notice</h1>
+    <p style="margin:26px 0 0; font-size:18.5px; line-height:1.68; color:#3A4650; text-wrap:pretty">This explains what we do with your details when you enquire, become a client, or use this site. It’s written to be read, not to cover us.</p>
+    <div style="margin-top:26px; display:flex; flex-wrap:wrap; gap:10px 28px; padding-top:22px; border-top:1px solid #E8E2D9">
+      <span style="font-size:14px; color:#3A4650">Last updated <span style="color:#9AA3AA">[date]</span></span>
+      <span style="font-size:14px; color:#3A4650">Data controller <span style="color:#9AA3AA">[EonTree Technologies, registration no.]</span></span>
+    </div>
+  </div>
+</section>
+
+<section style="max-width:1240px; margin:0 auto; padding:64px 40px 0">
+  <div style="display:grid; grid-template-columns:0.42fr 1.58fr; gap:72px; align-items:start">
+    <nav style="position:sticky; top:120px">
+      <div style="font-size:11.5px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#8A5A1E">Contents</div>
+      <ul style="margin:18px 0 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px">
+        <sc-for list="{{ toc }}" as="t" hint-placeholder-count="7">
+          <li><a href="{{ t.href }}" style="font-size:14.5px; line-height:1.5; color:#3A4650" style-hover="color:#8A5A1E">{{ t.label }}</a></li>
+        </sc-for>
+      </ul>
+      <div style="margin-top:28px; padding-top:22px; border-top:1px solid #E8E2D9">
+        <p style="margin:0; font-family:monospace; font-size:11px; line-height:1.65; color:#9AA3AA">draft for review — have a Malaysian legal adviser confirm this against the PDPA 2010 before publishing</p>
+      </div>
+    </nav>
+
+    <div style="max-width:70ch">
+      <sc-for list="{{ sections }}" as="s" hint-placeholder-count="7">
+        <div id="{{ s.id }}" style="padding-bottom:48px">
+          <h2 style="margin:0; font-family:Newsreader, Georgia, serif; font-weight:400; font-size:34px; line-height:1.14; letter-spacing:-0.015em; color:#1C2C39">{{ s.title }}</h2>
+          <sc-for list="{{ s.paras }}" as="p" hint-placeholder-count="2">
+            <p style="margin:20px 0 0; font-size:17.5px; line-height:1.68; color:#3A4650; text-wrap:pretty">{{ p }}</p>
+          </sc-for>
+          <ul style="margin:20px 0 0; padding:0; list-style:none; display:flex; flex-direction:column; border-top:1px solid #E8E2D9; display:{{ s.listDisplay }}">
+            <sc-for list="{{ s.items }}" as="i" hint-placeholder-count="4">
+              <li style="padding:14px 0; border-bottom:1px solid #E8E2D9; font-size:16.5px; line-height:1.6; color:#3A4650"><strong style="font-weight:600; color:#1C2C39">{{ i.term }}</strong> {{ i.desc }}</li>
+            </sc-for>
+          </ul>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section style="margin-top:56px; background:#F7F4EF">
+  <div style="max-width:1240px; margin:0 auto; padding:80px 40px; display:grid; grid-template-columns:1.1fr 0.9fr; gap:72px; align-items:center">
+    <div>
+      <h2 style="margin:0; max-width:24ch; font-family:Newsreader, Georgia, serif; font-weight:300; font-size:48px; line-height:1.06; letter-spacing:-0.02em; color:#1C2C39">Want your data removed, or just have a question?</h2>
+      <p style="margin:22px 0 0; max-width:44ch; font-size:17.5px; line-height:1.65; color:#3A4650; text-wrap:pretty">Email us and we’ll action it. You don’t need to explain why, and it won’t affect any work we’re doing for you.</p>
+    </div>
+    <div style="background:#FFFFFF; border:1px solid #E8E2D9; border-radius:22px; padding:32px; display:flex; flex-direction:column; gap:14px">
+      <span style="font-size:11.5px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#1C2C39">Data requests</span>
+      <span style="font-family:Newsreader, Georgia, serif; font-size:26px; line-height:1.2; color:#9AA3AA">[privacy email]</span>
+      <span style="font-size:14.5px; line-height:1.55; color:#3A4650">We respond within [X] business days.</span>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#25333E; border-top:1px solid rgba(247,244,239,0.12)">
+  <div style="max-width:1240px; margin:0 auto; padding:64px 40px 40px; display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:48px">
+    <div>
+      <img src="public/logo-horizontal.png" alt="EonTree Technologies" style="height:44px; width:auto; display:block">
+      <p style="margin:22px 0 0; max-width:30ch; font-family:Newsreader, Georgia, serif; font-style:italic; font-size:18px; line-height:1.5; color:rgba(247,244,239,0.7)">Rooted in nature, powered by technology.</p>
+    </div>
+    <sc-for list="{{ footerCols }}" as="col" hint-placeholder-count="3">
+      <div>
+        <div style="font-size:11.5px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#E0B384">{{ col.title }}</div>
+        <ul style="margin:18px 0 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:11px">
+          <sc-for list="{{ col.items }}" as="it" hint-placeholder-count="4">
+            <li style="font-size:14.5px; line-height:1.45"><a href="{{ it.href }}" style="color:{{ it.color }}" style-hover="color:#E0B384">{{ it.label }}</a></li>
+          </sc-for>
+        </ul>
+      </div>
+    </sc-for>
+  </div>
+  <div style="max-width:1240px; margin:0 auto; padding:24px 40px 44px; border-top:1px solid rgba(247,244,239,0.12); display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap">
+    <span style="font-size:13px; color:rgba(247,244,239,0.55)">© 2026 EonTree Technologies. <span style="color:rgba(247,244,239,0.4)">[License #PLACEHOLDER]</span></span>
+    <span style="font-size:13px; color:rgba(247,244,239,0.55)">Privacy notice</span>
+  </div>
+</footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { menu: null };
+
+  chrome(active) {
+    const home = 'EonTree Homepage.dc.html';
+    return {
+      closeMenu: () => this.setState({ menu: null }),
+      navGroups: [
+        { label: 'Systems', href: home + '#systems', items: [
+          { label: 'Lighting', hint: 'Scenes, dimming, occupancy', href: home + '#systems' },
+          { label: 'Security', hint: 'Cameras, locks, alerts', href: home + '#systems' },
+          { label: 'Climate', hint: 'Heating, cooling, blinds', href: home + '#systems' },
+          { label: 'Audio-Visual', hint: 'Multi-room sound and TV', href: home + '#systems' },
+          { label: 'How it all connects', hint: 'Four apps become one', href: home + '#oneapp' },
+        ] },
+        { label: 'Pricing', href: 'EonTree Pricing.dc.html', items: [] },
+        { label: 'Work', href: home + '#work', items: [
+          { label: 'Recent projects', hint: 'Three homes and an office', href: home + '#work' },
+          { label: 'Full case study', hint: 'The whole-house retrofit, in detail', href: 'EonTree Case Study.dc.html' },
+          { label: 'Brands we install', hint: 'What we’re authorised for', href: home + '#brands' },
+        ] },
+        { label: 'Support', href: 'EonTree Support.dc.html', items: [
+          { label: 'After the install', hint: 'Warranty, response times, expansion', href: 'EonTree Support.dc.html' },
+          { label: 'Where we work', hint: 'Service areas and travel', href: 'EonTree Where We Work.dc.html' },
+          { label: 'Questions', hint: 'Rewiring, existing kit, moving house', href: 'EonTree FAQ.dc.html' },
+          { label: 'Our story', hint: 'Why EonTree exists', href: 'EonTree About.dc.html' },
+        ] },
+      ].map((g) => ({
+        label: g.label,
+        href: g.href,
+        items: g.items,
+        caret: g.items.length ? '▾' : '',
+        color: g.label === active ? '#8A5A1E' : '#1C2C39',
+        display: this.state.menu === g.label && g.items.length ? 'block' : 'none',
+        open: () => this.setState({ menu: g.label }),
+      })),
+      footerCols: [
+        { title: 'Systems', items: [
+          { label: 'Lighting', href: home + '#systems' },
+          { label: 'Security', href: home + '#systems' },
+          { label: 'Climate', href: home + '#systems' },
+          { label: 'Audio-Visual', href: home + '#systems' },
+        ] },
+        { title: 'Company', items: [
+          { label: 'Our story', href: 'EonTree About.dc.html' },
+          { label: 'Pricing', href: 'EonTree Pricing.dc.html' },
+          { label: 'Case study', href: 'EonTree Case Study.dc.html' },
+          { label: 'Where we work', href: 'EonTree Where We Work.dc.html' },
+        ] },
+        { title: 'Support', items: [
+          { label: 'After the install', href: 'EonTree Support.dc.html' },
+          { label: 'Questions', href: 'EonTree FAQ.dc.html' },
+          { label: 'Book a consultation', href: home + '#contact' },
+          { label: '[phone]', href: '' },
+        ] },
+      ].map((c) => ({
+        title: c.title,
+        items: c.items.map((it) => ({
+          ...it,
+          color: it.href ? 'rgba(247,244,239,0.78)' : 'rgba(247,244,239,0.42)',
+        })),
+      })),
+    };
+  }
+
+  renderVals() {
+    const sections = [
+      { id: 'collect', title: 'What we collect', paras: ['Only what we need to quote for the work and then do it properly.'],
+        items: [
+          { term: 'Your contact details —', desc: 'name, phone number, and email, so we can reply to an enquiry.' },
+          { term: 'Property information —', desc: 'address, property type, and what you want installed. We need the address to survey and to quote travel honestly.' },
+          { term: 'What you tell us —', desc: 'anything you write in the enquiry message or discuss during the consultation.' },
+          { term: 'Site records for clients —', desc: 'system designs, device lists, and network configuration for properties we’ve worked on, so we can support them later.' },
+          { term: 'Basic site analytics —', desc: 'anonymous page-visit data. No profiles, no advertising trackers.' },
+        ] },
+      { id: 'why', title: 'Why we hold it', paras: ['Three reasons, and nothing beyond them. We do not sell your details to anyone, and we do not pass them to marketing companies.'],
+        items: [
+          { term: 'To answer your enquiry —', desc: 'you asked us to get in touch, so we do.' },
+          { term: 'To carry out the work —', desc: 'surveying, designing, installing, and supporting a system needs records of what’s in the property.' },
+          { term: 'To meet our obligations —', desc: 'invoices, warranties, and electrical compliance records we’re required to keep.' },
+        ] },
+      { id: 'consent', title: 'Your consent', paras: ['When you submit the enquiry form you tick a box confirming we can contact you about that enquiry. That’s the only thing the tick covers — it isn’t a subscription, and we won’t add you to a mailing list off the back of it.', 'You can withdraw consent at any time and we’ll stop contacting you, even mid-quote.'], items: [] },
+      { id: 'sharing', title: 'Who else sees it', paras: ['As few people as possible. Where we do share, it’s because the job can’t be done otherwise.'],
+        items: [
+          { term: 'Our installers —', desc: 'the team fitting your system need the address and the design.' },
+          { term: 'Suppliers, where required —', desc: 'occasionally a manufacturer needs a serial number or address to honour a warranty claim.' },
+          { term: 'Service providers —', desc: 'our email and file storage sit with third-party providers, listed on request.' },
+          { term: 'Never —', desc: 'advertisers, data brokers, or anyone wanting to sell you something.' },
+        ] },
+      { id: 'keep', title: 'How long we keep it', paras: ['Enquiries that don’t become projects: [X] months, then deleted. Client records: for the life of the warranty plus [X] years, because support and compliance depend on them. Financial records: as long as Malaysian tax law requires.', 'Camera footage and system logs stay in your system, under your control. We don’t hold copies, and we can’t view your cameras unless you explicitly grant access for a support session.'], items: [] },
+      { id: 'rights', title: 'Your rights', paras: ['Under the Personal Data Protection Act 2010 you can ask us to do the following, free of charge.'],
+        items: [
+          { term: 'See what we hold —', desc: 'we’ll send you a copy.' },
+          { term: 'Correct it —', desc: 'if anything’s wrong, tell us and we’ll fix it.' },
+          { term: 'Delete it —', desc: 'we’ll remove everything we’re not legally required to keep.' },
+          { term: 'Stop us contacting you —', desc: 'immediately, and permanently if you want.' },
+        ] },
+      { id: 'security', title: 'How it’s protected', paras: ['Enquiry data goes to an inbox only our team can reach. System designs and network details are the sensitive ones, so those are kept in access-controlled storage rather than on laptops or phones.', 'If we ever suffer a breach that affects your data, we’ll tell you what happened and what we’re doing about it — quickly, and in plain terms.'], items: [] },
+    ];
+
+    return {
+      ...this.chrome('Support'),
+      toc: sections.map((s) => ({ label: s.title, href: '#' + s.id })),
+      sections: sections.map((s) => ({ ...s, listDisplay: s.items.length ? 'flex' : 'none' })),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #FFFFFF; color: #3A4650; font-family: Manrope, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #8A5A1E; text-decoration: none; }
+  a:hover { color: #1C2C39; }
+  * { box-sizing: border-box; }
+  @keyframes et-cue { 0%,100% { transform: translateY(0); opacity: .55 } 50% { transform: translateY(6px); opacity: 1 } }
+</style>
+</helmet>
+
+<div style="width:100%; overflow-x:hidden">
+
+<header style="position:fixed; top:0; left:0; right:0; z-index:50; background:{{ navBg }}; backdrop-filter:blur(10px); border-bottom:1px solid {{ navLine }}; transition:background 300ms ease, border-color 300ms ease">
+  <nav style="max-width:1240px; margin:0 auto; padding:14px 40px; display:flex; align-items:center; justify-content:space-between; gap:40px">
+    <a href="#top" style="display:flex; align-items:center; flex-shrink:0"><img src="public/logo-horizontal.png" alt="EonTree Technologies" style="height:46px; width:auto; display:block"></a>
+    <ul style="display:flex; align-items:center; gap:30px; list-style:none; margin:0; padding:0">
+      <sc-for list="{{ navGroups }}" as="g" hint-placeholder-count="4">
+        <li style="position:relative; white-space:nowrap" onMouseEnter="{{ g.open }}" onMouseLeave="{{ closeMenu }}">
+          <a href="{{ g.href }}" style="display:inline-flex; align-items:center; gap:7px; font-size:14.5px; font-weight:500; letter-spacing:0.01em; white-space:nowrap; color:{{ g.color }}; transition:color 200ms ease" style-hover="color:#E0B384">{{ g.label }}<span style="font-size:8.5px; line-height:1; transform:translateY(1px)">{{ g.caret }}</span></a>
+          <div style="position:absolute; top:100%; left:-20px; padding-top:16px; display:{{ g.display }}">
+            <div style="min-width:288px; background:#FFFFFF; border:1px solid #E8E2D9; border-radius:16px; padding:10px; box-shadow:0 28px 64px -32px rgba(28,44,57,0.45)">
+              <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="4">
+                <a href="{{ it.href }}" style="display:block; padding:11px 14px; border-radius:10px; color:#1C2C39; white-space:normal" style-hover="background:#F7F4EF; color:#8A5A1E">
+                  <span style="display:block; font-size:14px; font-weight:600; line-height:1.3">{{ it.label }}</span>
+                  <span style="display:block; margin-top:3px; font-size:12.5px; line-height:1.45; color:#3A4650">{{ it.hint }}</span>
+                </a>
+              </sc-for>
+            </div>
+          </div>
+        </li>
+      </sc-for>
+    </ul>
+    <a href="#contact" style="flex-shrink:0; display:inline-flex; align-items:center; min-height:44px; padding:0 28px; white-space:nowrap; border-radius:999px; background:#E0B384; color:#1C2C39; font-size:14.5px; font-weight:700; letter-spacing:0.01em; box-shadow:0 8px 20px -12px rgba(28,44,57,0.5)" style-hover="background:#F5C18A; color:#1C2C39">Book a consultation</a>
+  </nav>
+</header>
+
+<section id="top" style="position:relative; height:100svh; min-height:640px; overflow:hidden; background:#1C2C39">
+  <img src="public/images/project-holiday.jpg" alt="" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block">
+  <video src="public/hero-smart-home.mp4" poster="public/images/project-holiday.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Warm home exterior at dusk" onError="{{ videoFailed }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:{{ videoDisplay }}"></video>
+  <div aria-hidden="true" style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(28,44,57,0.26) 0%, rgba(28,44,57,0.06) 34%, rgba(28,44,57,0.58) 76%, rgba(28,44,57,0.86) 100%)"></div>
+  <div aria-hidden="true" style="position:absolute; inset:0; background:linear-gradient(90deg, rgba(28,44,57,0.3) 0%, rgba(28,44,57,0.06) 52%, transparent 100%)"></div>
+
+  <div style="position:relative; height:100%; max-width:1240px; margin:0 auto; padding:120px 40px 0; display:flex; flex-direction:column; justify-content:flex-end">
+    <p style="margin:0 0 26px; font-size:11.5px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#E0B384">Smart home, properly installed</p>
+    <h1 style="margin:0; max-width:20ch; font-family:Newsreader, Georgia, serif; font-weight:300; font-size:92px; line-height:0.98; letter-spacing:-0.025em; color:#FFFFFF; text-shadow:0 2px 30px rgba(28,44,57,0.35)">Your whole home, <em style="font-style:italic; font-weight:300">working as one.</em></h1>
+    <p style="margin:30px 0 0; max-width:52ch; font-size:19px; line-height:1.6; color:rgba(255,255,255,0.9); text-wrap:pretty">We design and install smart lighting, security, climate, and AV — then set it up so it actually works together. One system, one app, one team that looks after it.</p>
+    <div style="display:flex; align-items:center; gap:14px; margin-top:38px">
+      <a href="#contact" style="display:inline-flex; align-items:center; min-height:54px; padding:0 30px; white-space:nowrap; border-radius:999px; background:#E0B384; color:#1C2C39; font-size:15.5px; font-weight:700; box-shadow:0 16px 36px -18px rgba(0,0,0,0.6)" style-hover="background:#F5C18A">Book a consultation</a>
+      <a href="#systems" style="display:inline-flex; align-items:center; min-height:54px; padding:0 28px; white-space:nowrap; border-radius:999px; border:1px solid rgba(255,255,255,0.6); color:#FFFFFF; font-size:15.5px; font-weight:600; backdrop-filter:blur(4px)" style-hover="background:#FFFFFF; color:#1C2C39">See what we install</a>
+    </div>
+
+    <div style="margin-top:56px; border-top:1px solid rgba(255,255,255,0.22); padding:22px 0 34px; display:flex; align-items:center; justify-content:space-between; gap:40px">
+      <ul style="display:flex; align-items:baseline; gap:44px; list-style:none; margin:0; padding:0">
+        <sc-for list="{{ heroFacts }}" as="h" hint-placeholder-count="3">
+          <li style="display:flex; align-items:baseline; gap:10px">
+            <span style="font-family:Newsreader, Georgia, serif; font-size:32px; line-height:1; color:#E0B384">{{ h.value }}</span>
+            <span style="font-size:12px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.72)">{{ h.label }}</span>
+          </li>
+        </sc-for>
+      </ul>
+      <span style="display:flex; align-items:center; gap:10px; font-size:11.5px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.6)">
+        Scroll
+        <span style="display:block; width:1px; height:26px; background:rgba(255,255,255,0.5); animation:et-cue 2.4s ease-in-out infinite"></span>
+      </span>
+    </div>
+  </div>
+</section>
+
+<section style="max-width:1240px; margin:0 auto; padding:34px 40px 0">
+  <div style="border-bottom:1px solid #E8E2D9; padding-bottom:26px; display:flex; flex-wrap:wrap; align-items:center; row-gap:18px; column-gap:40px">
+    <span style="font-size:11.5px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#1C2C39; white-space:nowrap; line-height:1.4">Licensed, certified, insured</span>
+    <span style="font-size:14.5px; color:#3A4650; white-space:nowrap; line-height:1.4">Licensed electrical &amp; cabling contractor <span style="color:#9AA3AA">[ST #PLACEHOLDER]</span></span>
+    <span style="font-size:14.5px; color:#3A4650; white-space:nowrap; line-height:1.4">Certified installer <span style="color:#9AA3AA">[BRAND PLACEHOLDER]</span></span>
+    <span style="font-size:14.5px; color:#3A4650; white-space:nowrap; line-height:1.4">Workmanship warranty <span style="color:#9AA3AA">[X years]</span></span>
+    <span style="font-size:14.5px; color:#3A4650; white-space:nowrap; line-height:1.4">Fully insured</span>
+  </div>
+</section>
+
+<section id="systems" style="max-width:1240px; margin:0 auto; padding:96px 40px 0">
+  <div style="display:flex; align-items:end; justify-content:space-between; gap:48px; margin-bottom:56px">
+    <div>
+      <p style="margin:0 0 20px; font-size:11.5px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#8A5A1E">What we do</p>
+      <h2 style="margin:0; font-family:Newsreader, Georgia, serif; font-weight:300; font-size:56px; line-height:1.04; letter-spacing:-0.015em; color:#1C2C39">Four systems, one home.</h2>
+    </div>
+    <p style="margin:0; max-width:36ch; font-size:17px; line-height:1.65; color:#3A4650; text-wrap:pretty">Each one works on its own. The point is that they work together — one app, one set of scenes, one team to call.</p>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:26px">
+    <sc-for list="{{ systems }}" as="s" hint-placeholder-count="4">
+      <article style="display:grid; grid-template-columns:{{ s.cols }}; gap:0; border:1px solid #E8E2D9; border-radius:24px; overflow:hidden; background:#FFFFFF; min-height:360px">
+        <div style="order:{{ s.imgOrder }}; position:relative; background:#F7F4EF; min-height:360px">
+          <img src="{{ s.image }}" alt="{{ s.alt }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block">
+        </div>
+        <div style="order:{{ s.textOrder }}; padding:52px; display:flex; flex-direction:column; justify-content:center">
+          <div style="display:flex; align-items:baseline; gap:14px">
+            <span style="font-family:Newsreader, Georgia, serif; font-size:15px; color:#8A5A1E">{{ s.num }}</span>
+            <h3 style="margin:0; font-family:Newsreader, Georgia, serif; font-weight:400; font-size:40px; line-height:1.05; letter-spacing:-0.01em; color:#1C2C39">{{ s.title }}</h3>
+          </div>
+          <p style="margin:20px 0 0; max-width:46ch; font-size:17px; line-height:1.65; color:#3A4650; text-wrap:pretty">{{ s.blurb }}</p>
+          <ul style="margin:28px 0 0; padding:0; list-style:none; display:flex; flex-wrap:wrap; gap:8px">
+            <sc-for list="{{ s.caps }}" as="c" hint-placeholder-count="4">
+              <li style="font-size:13px; font-weight:600; color:#1C2C39; background:#F7F4EF; border:1px solid #E8E2D9; border-radius:999px; padding:7px 14px">{{ c }}</li>
+            </sc-for>
+          </ul>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<section id="oneapp" style="margin-top:112px; background:#1C2C39; position:relative; overflow:hidden">
+  <div aria-hidden="true" style="position:absolute; top:-160px; right:-120px; width:520px; height:520px; border-radius:50%; background:radial-gradient(circle, rgba(224,179,132,0.18), transparent 65%)"></div>
+  <div style="position:relative; max-width:1240px; margin:0 auto; padding:104px 40px; display:grid; grid-template-columns:0.95fr 1.05fr; gap:80px; align-items:center">
+    <div>
+      <p style="margin:0 0 20px; font-size:11.5px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#E0B384">The part that matters</p>
+      <h2 style="margin:0; font-family:Newsreader, Georgia, serif; font-weight:300; font-size:56px; line-height:1.04; letter-spacing:-0.015em; color:#F7F4EF">Four apps become one.</h2>
+      <p style="margin:26px 0 0; max-width:40ch; font-size:18px; line-height:1.65; color:rgba(247,244,239,0.82); text-wrap:pretty">Most homes end up with a different app per brand. We integrate everything behind one control system, so a scene like <em style="color:#E0B384; font-style:normal; font-weight:600">Evening</em> dims the lights, locks the doors, and drops the aircon two degrees in a single tap.</p>
+      <ul style="margin:34px 0 0; padding:0; list-style:none; display:flex; flex-direction:column; border-top:1px solid rgba(247,244,239,0.16)">
+        <sc-for list="{{ appPoints }}" as="p" hint-placeholder-count="4">
+          <li style="display:flex; gap:18px; align-items:baseline; padding:16px 0; border-bottom:1px solid rgba(247,244,239,0.16)">
+            <span style="font-size:12px; font-weight:700; letter-spacing:0.1em; color:#E0B384; min-width:26px">{{ p.n }}</span>
+            <span style="font-size:16px; line-height:1.55; color:rgba(247,244,239,0.9)">{{ p.text }}</span>
+          </li>
+        </sc-for>
+      </ul>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:22px; align-items:center">
+      <div style="border-radius:22px; overflow:hidden; aspect-ratio:3/4; background:rgba(247,244,239,0.06)">
+        <img src="public/images/hub.jpg" alt="Wall-mounted control panel in a hallway" style="width:100%; height:100%; object-fit:cover; display:block">
+      </div>
+      <div style="border-radius:26px; border:1px solid rgba(247,244,239,0.18); background:#25333E; padding:22px; height:440px; display:flex; flex-direction:column">
+        <div style="font-size:10.5px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#E0B384">Home</div>
+        <div style="font-family:Newsreader, Georgia, serif; font-size:26px; color:#F7F4EF; margin-top:6px; line-height:1.1">Good evening</div>
+        <div style="margin-top:auto; display:flex; flex-direction:column; gap:10px">
+          <sc-for list="{{ appRows }}" as="r" hint-placeholder-count="4">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; background:rgba(247,244,239,0.07); border-radius:12px; padding:12px 14px">
+              <span style="font-size:12.5px; font-weight:600; color:rgba(247,244,239,0.92)">{{ r.label }}</span>
+              <span style="font-size:11.5px; font-weight:700; letter-spacing:0.04em; color:{{ r.color }}">{{ r.state }}</span>
+            </div>
+          </sc-for>
+          <div style="font-family:monospace; font-size:9.5px; letter-spacing:0.06em; color:rgba(247,244,239,0.45); text-align:center; padding-top:6px">app screen placeholder — drop real UI</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process" style="max-width:1240px; margin:0 auto; padding:104px 40px 0">
+  <div style="max-width:44ch; margin-bottom:60px">
+    <p style="margin:0 0 20px; font-size:11.5px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#8A5A1E">What working with us looks like</p>
+    <h2 style="margin:0; font-family:Newsreader, Georgia, serif; font-weight:300; font-size:56px; line-height:1.04; letter-spacing:-0.015em; color:#1C2C39">From idea to fully running, in four steps.</h2>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:36px; border-top:1px solid #E8E2D9; padding-top:36px">
+    <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
+      <div>
+        <div style="display:flex; align-items:center; gap:10px">
+          <span style="width:9px; height:9px; border-radius:50%; background:#E0B384; display:block"></span>
+          <span style="font-size:11.5px; font-weight:700; letter-spacing:0.16em; color:#8A5A1E">STEP {{ st.n }}</span>
+        </div>
+        <h3 style="margin:18px 0 0; font-family:Newsreader, Georgia, serif; font-weight:400; font-size:27px; line-height:1.15; color:#1C2C39">{{ st.title }}</h3>
+        <p style="margin:14px 0 0; font-size:15.5px; line-height:1.65; color:#3A4650; text-wrap:pretty">{{ st.text }}</p>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section id="work" style="margin-top:112px; background:#F7F4EF">
+  <div style="max-width:1240px; margin:0 auto; padding:104px 40px">
+    <div style="display:flex; align-items:end; justify-content:space-between; gap:48px; margin-bottom:56px">
+      <div>
+        <p style="margin:0 0 20px; font-size:11.5px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#8A5A1E">Recent work</p>
+        <h2 style="margin:0; max-width:26ch; font-family:Newsreader, Georgia, serif; font-weight:300; font-size:56px; line-height:1.04; letter-spacing:-0.015em; color:#1C2C39">A few homes (and one office) we’ve wired up.</h2>
+      </div>
+      <p style="margin:0; font-family:monospace; font-size:11px; line-height:1.6; color:#9AA3AA; max-width:24ch">sample projects — replace with real ones, with client sign-off</p>
+    </div>
+    <div style="display:grid; grid-template-columns:1.35fr 1fr 1fr; gap:24px; align-items:stretch">
+      <sc-for list="{{ projects }}" as="p" hint-placeholder-count="3">
+        <article style="background:#FFFFFF; border:1px solid #E8E2D9; border-radius:22px; overflow:hidden; display:flex; flex-direction:column">
+          <div style="aspect-ratio:{{ p.ratio }}; background:#F7F4EF; overflow:hidden">
+            <img src="{{ p.image }}" alt="{{ p.alt }}" style="width:100%; height:100%; object-fit:cover; display:block">
+          </div>
+          <div style="padding:28px 28px 30px; display:flex; flex-direction:column; flex:1">
+            <h3 style="margin:0; font-family:Newsreader, Georgia, serif; font-weight:400; font-size:28px; line-height:1.12; color:#1C2C39">{{ p.title }}</h3>
+            <p style="margin:16px 0 0; font-size:16px; line-height:1.62; color:#3A4650; text-wrap:pretty">{{ p.brief }}</p>
+            <div style="margin-top:auto; padding-top:22px">
+              <div style="font-size:10.5px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#8A5A1E">Result</div>
+              <div style="margin-top:8px; font-family:Newsreader, Georgia, serif; font-size:20px; line-height:1.35; color:#1C2C39">{{ p.result }}</div>
+            </div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="brands" style="max-width:1240px; margin:0 auto; padding:104px 40px 0">
+  <div style="display:grid; grid-template-columns:0.85fr 1.15fr; gap:72px; align-items:start">
+    <div>
+      <p style="margin:0 0 20px; font-size:11.5px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#8A5A1E">The kit</p>
+      <h2 style="margin:0; font-family:Newsreader, Georgia, serif; font-weight:300; font-size:52px; line-height:1.04; letter-spacing:-0.015em; color:#1C2C39">We install brands we’d put in our own homes.</h2>
+      <p style="margin:24px 0 0; max-width:34ch; font-size:17px; line-height:1.65; color:#3A4650; text-wrap:pretty">We only fit kit we’re trained and authorised to install and support — so when something needs tuning, it’s us you call, not a helpline.</p>
+      <p style="margin:22px 0 0; font-family:monospace; font-size:11px; line-height:1.6; color:#9AA3AA; max-width:30ch">sample partners — show only brands EonTree is authorised for</p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:1px; background:#E8E2D9; border:1px solid #E8E2D9; border-radius:20px; overflow:hidden">
+      <sc-for list="{{ brands }}" as="b" hint-placeholder-count="8">
+        <div style="background:#FFFFFF; height:116px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; padding:12px">
+          <img src="{{ b.src }}" alt="{{ b.name }}" style="width:26px; height:26px; display:block">
+          <span style="font-size:12.5px; font-weight:600; letter-spacing:0.02em; color:#1C2C39">{{ b.name }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="margin-top:112px; background:#1C2C39">
+  <div style="max-width:1240px; margin:0 auto; padding:104px 40px">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start">
+      <div>
+        <p style="margin:0 0 20px; font-size:11.5px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#E0B384">Let’s talk</p>
+        <h2 style="margin:0; max-width:18ch; font-family:Newsreader, Georgia, serif; font-weight:300; font-size:60px; line-height:1.02; letter-spacing:-0.02em; color:#F7F4EF">Tell us what you want your space to do.</h2>
+        <p style="margin:26px 0 0; max-width:40ch; font-size:18px; line-height:1.65; color:rgba(247,244,239,0.82)">A quick chat is the best start. Tell us about the property and what you’re after, and we’ll come back with a plan.</p>
+        <dl style="margin:48px 0 0; display:grid; grid-template-columns:1fr 1fr; gap:32px 24px; border-top:1px solid rgba(247,244,239,0.16); padding-top:32px">
+          <sc-for list="{{ facts }}" as="f" hint-placeholder-count="4">
+            <div>
+              <dd style="margin:0; font-family:Newsreader, Georgia, serif; font-size:38px; line-height:1; color:#E0B384">{{ f.value }}</dd>
+              <dt style="margin:10px 0 0; font-size:13.5px; line-height:1.5; color:rgba(247,244,239,0.7)">{{ f.label }}</dt>
+            </div>
+          </sc-for>
+        </dl>
+        <p style="margin:26px 0 0; font-family:monospace; font-size:11px; color:rgba(247,244,239,0.45)">figures flagged until real ones are confirmed</p>
+      </div>
+      <div style="background:#FFFFFF; border-radius:24px; padding:36px">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px">
+          <label style="display:block; grid-column:span 2">
+            <span style="display:block; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#1C2C39; margin-bottom:8px">Name</span>
+            <input placeholder="Your name" style="width:100%; height:50px; padding:0 16px; border:1px solid #E8E2D9; border-radius:12px; font-family:Manrope, sans-serif; font-size:15px; color:#1C2C39; background:#FFFFFF; outline:none" style-focus="border-color:#E0B384; box-shadow:0 0 0 3px rgba(224,179,132,0.28)">
+          </label>
+          <label style="display:block">
+            <span style="display:block; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#1C2C39; margin-bottom:8px">Phone</span>
+            <input placeholder="Mobile" style="width:100%; height:50px; padding:0 16px; border:1px solid #E8E2D9; border-radius:12px; font-family:Manrope, sans-serif; font-size:15px; color:#1C2C39; outline:none" style-focus="border-color:#E0B384; box-shadow:0 0 0 3px rgba(224,179,132,0.28)">
+          </label>
+          <label style="display:block">
+            <span style="display:block; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#1C2C39; margin-bottom:8px">Email <span style="font-weight:500; letter-spacing:0.02em; text-transform:none; color:#9AA3AA">optional</span></span>
+            <input placeholder="you@email.com" style="width:100%; height:50px; padding:0 16px; border:1px solid #E8E2D9; border-radius:12px; font-family:Manrope, sans-serif; font-size:15px; color:#1C2C39; outline:none" style-focus="border-color:#E0B384; box-shadow:0 0 0 3px rgba(224,179,132,0.28)">
+          </label>
+          <div style="grid-column:span 2">
+            <span style="display:block; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#1C2C39; margin-bottom:10px">Property type</span>
+            <div style="display:flex; gap:8px">
+              <sc-for list="{{ propertyTypes }}" as="t" hint-placeholder-count="3">
+                <button type="button" onClick="{{ t.pick }}" style="cursor:pointer; flex:1; height:44px; border-radius:999px; border:1px solid {{ t.border }}; background:{{ t.bg }}; color:{{ t.fg }}; font-family:Manrope, sans-serif; font-size:13.5px; font-weight:600">{{ t.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <div style="grid-column:span 2">
+            <span style="display:block; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#1C2C39; margin-bottom:10px">What are you looking to add?</span>
+            <div style="display:flex; flex-wrap:wrap; gap:8px">
+              <sc-for list="{{ wants }}" as="w" hint-placeholder-count="6">
+                <button type="button" onClick="{{ w.pick }}" style="cursor:pointer; height:40px; padding:0 16px; border-radius:999px; border:1px solid {{ w.border }}; background:{{ w.bg }}; color:{{ w.fg }}; font-family:Manrope, sans-serif; font-size:13.5px; font-weight:600">{{ w.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <label style="display:block; grid-column:span 2">
+            <span style="display:block; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#1C2C39; margin-bottom:8px">Anything else <span style="font-weight:500; letter-spacing:0.02em; text-transform:none; color:#9AA3AA">optional</span></span>
+            <textarea rows="3" placeholder="Rough size of the property, timing, anything already installed." style="width:100%; padding:14px 16px; border:1px solid #E8E2D9; border-radius:12px; font-family:Manrope, sans-serif; font-size:15px; line-height:1.55; color:#1C2C39; resize:vertical; outline:none" style-focus="border-color:#E0B384; box-shadow:0 0 0 3px rgba(224,179,132,0.28)"></textarea>
+          </label>
+          <label style="grid-column:span 2; display:flex; gap:12px; align-items:flex-start; cursor:pointer">
+            <span onClick="{{ toggleConsent }}" style="flex-shrink:0; width:22px; height:22px; margin-top:1px; border-radius:6px; border:1px solid {{ consentBorder }}; background:{{ consentBg }}; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700">{{ consentMark }}</span>
+            <span style="font-size:13.5px; line-height:1.5; color:#3A4650">I’m happy for EonTree to contact me about this enquiry. We keep your details for that purpose only — see the <a href="EonTree Privacy.dc.html">privacy notice</a>.</span>
+          </label>
+          <button type="button" onClick="{{ submit }}" style="grid-column:span 2; cursor:pointer; min-height:54px; padding:0 24px; white-space:nowrap; border:none; border-radius:999px; background:#E0B384; color:#1C2C39; font-family:Manrope, sans-serif; font-size:15.5px; font-weight:700" style-hover="background:#F5C18A">{{ submitLabel }}</button>
+          <p style="grid-column:span 2; margin:2px 0 0; text-align:center; font-size:13.5px; line-height:1.5; color:#3A4650">We reply within one business day. Rather talk it through? Call <span style="color:#9AA3AA">[phone]</span>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#25333E; border-top:1px solid rgba(247,244,239,0.12)">
+  <div style="max-width:1240px; margin:0 auto; padding:64px 40px 40px; display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:48px">
+    <div>
+      <img src="public/logo-horizontal.png" alt="EonTree Technologies" style="height:44px; width:auto; display:block">
+      <p style="margin:22px 0 0; max-width:30ch; font-family:Newsreader, Georgia, serif; font-style:italic; font-size:18px; line-height:1.5; color:rgba(247,244,239,0.7)">Rooted in nature, powered by technology.</p>
+    </div>
+    <sc-for list="{{ footerCols }}" as="col" hint-placeholder-count="3">
+      <div>
+        <div style="font-size:11.5px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#E0B384">{{ col.title }}</div>
+        <ul style="margin:18px 0 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:11px">
+          <sc-for list="{{ col.items }}" as="it" hint-placeholder-count="4">
+            <li style="font-size:14.5px; line-height:1.45"><a href="{{ it.href }}" style="color:{{ it.color }}" style-hover="color:#E0B384">{{ it.label }}</a></li>
+          </sc-for>
+        </ul>
+      </div>
+    </sc-for>
+  </div>
+  <div style="max-width:1240px; margin:0 auto; padding:24px 40px 44px; border-top:1px solid rgba(247,244,239,0.12); display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap">
+    <span style="font-size:13px; color:rgba(247,244,239,0.55)">© 2026 EonTree Technologies. <span style="color:rgba(247,244,239,0.4)">[License #PLACEHOLDER]</span></span>
+    <a href="EonTree Privacy.dc.html" style="font-size:13px; color:rgba(247,244,239,0.55)" style-hover="color:#E0B384">Privacy notice</a>
+  </div>
+</footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { type: 'Home', wants: ['Full system'], sent: false, scrolled: false, noVideo: false, menu: null, faq: 0, consent: false };
+
+  componentDidMount() {
+    this.onScroll = () => {
+      const s = window.scrollY > window.innerHeight * 0.6;
+      if (s !== this.state.scrolled) this.setState({ scrolled: s });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+  }
+  componentWillUnmount() { window.removeEventListener('scroll', this.onScroll); }
+
+  chip(active) {
+    return active
+      ? { border: '#1C2C39', bg: '#1C2C39', fg: '#FFFFFF' }
+      : { border: '#E8E2D9', bg: '#FFFFFF', fg: '#1C2C39' };
+  }
+
+  renderVals() {
+    const accent = '#E0B384';
+    const dark = this.state.scrolled;
+
+    return {
+      videoDisplay: this.state.noVideo ? 'none' : 'block',
+      videoFailed: () => { if (!this.state.noVideo) this.setState({ noVideo: true }); },
+      navBg: dark ? 'rgba(255,255,255,0.94)' : 'rgba(28,44,57,0.28)',
+      navFg: dark ? '#1C2C39' : '#FFFFFF',
+      navLine: dark ? '#E8E2D9' : 'rgba(255,255,255,0.18)',
+      closeMenu: () => this.setState({ menu: null }),
+      navGroups: [
+        { label: 'Systems', href: '#systems', items: [
+          { label: 'Lighting', hint: 'Scenes, dimming, occupancy', href: '#systems' },
+          { label: 'Security', hint: 'Cameras, locks, alerts', href: '#systems' },
+          { label: 'Climate', hint: 'Heating, cooling, blinds', href: '#systems' },
+          { label: 'Audio-Visual', hint: 'Multi-room sound and TV', href: '#systems' },
+          { label: 'How it all connects', hint: 'Four apps become one', href: '#oneapp' },
+        ] },
+        { label: 'Pricing', href: 'EonTree Pricing.dc.html', items: [] },
+        { label: 'Work', href: '#work', items: [
+          { label: 'Recent projects', hint: 'Three homes and an office', href: '#work' },
+          { label: 'Full case study', hint: 'The whole-house retrofit, in detail', href: 'EonTree Case Study.dc.html' },
+          { label: 'Brands we install', hint: 'What we’re authorised for', href: '#brands' },
+        ] },
+        { label: 'Support', href: 'EonTree Support.dc.html', items: [
+          { label: 'After the install', hint: 'Warranty, response times, expansion', href: 'EonTree Support.dc.html' },
+          { label: 'Where we work', hint: 'Service areas and travel', href: 'EonTree Where We Work.dc.html' },
+          { label: 'Questions', hint: 'Rewiring, existing kit, moving house', href: 'EonTree FAQ.dc.html' },
+          { label: 'Our story', hint: 'Why EonTree exists', href: 'EonTree About.dc.html' },
+        ] },
+      ].map((g) => ({
+        label: g.label,
+        href: g.href,
+        items: g.items,
+        caret: g.items.length ? '▾' : '',
+        color: dark ? '#1C2C39' : '#FFFFFF',
+        display: this.state.menu === g.label && g.items.length ? 'block' : 'none',
+        open: () => this.setState({ menu: g.label }),
+      })),
+      heroFacts: [
+        { value: '4', label: 'systems' },
+        { value: '1', label: 'app' },
+        { value: '1', label: 'team' },
+      ],
+      systems: [
+        { num: '01', title: 'Lighting', image: 'public/images/lighting.jpg',
+          alt: 'Warm layered lighting in a living room at dusk',
+          blurb: 'Lighting that follows your day — bright for work, warm for evenings, off when the room’s empty. Set scenes once and forget the switches.',
+          caps: ['Scenes', 'Dimming', 'Occupancy sensing', 'Away mode'],
+          cols: '1.05fr 1fr', imgOrder: 1, textOrder: 2 },
+        { num: '02', title: 'Security', image: 'public/images/security.jpg',
+          alt: 'Smart lock and doorbell camera at a front entrance',
+          blurb: 'Cameras, sensors, smart locks, and alerts that reach your phone wherever you are. See who’s at the door, lock up from bed, know the moment something’s off.',
+          caps: ['Cameras', 'Smart locks', 'Motion alerts', 'Door sensors'],
+          cols: '1fr 1.05fr', imgOrder: 2, textOrder: 1 },
+        { num: '03', title: 'Climate', image: 'public/images/climate.jpg',
+          alt: 'Wall thermostat beside a window with blinds half drawn',
+          blurb: 'Heating, cooling, and blinds that run themselves around your schedule and the weather — comfortable when you’re home, efficient when you’re not.',
+          caps: ['Zoned control', 'Blinds', 'Schedules', 'Energy saving'],
+          cols: '1.05fr 1fr', imgOrder: 1, textOrder: 2 },
+        { num: '04', title: 'Audio-Visual', image: 'public/images/av.jpg',
+          alt: 'Living room media wall with in-ceiling speakers',
+          blurb: 'Music in any room, a TV setup without the cable mess, and one remote (or your voice) that controls the lot.',
+          caps: ['Multi-room audio', 'Cable management', 'Voice control', 'One remote'],
+          cols: '1fr 1.05fr', imgOrder: 2, textOrder: 1 },
+      ],
+      appPoints: [
+        { n: '01', text: 'One app for lights, locks, climate, and AV — not four.' },
+        { n: '02', text: 'Phone, wall panel, or your voice — the same system behind all three.' },
+        { n: '03', text: 'Scenes you set once: Morning, Evening, Movie, Away.' },
+        { n: '04', text: 'Alerts that reach you wherever you are, not just at home.' },
+      ],
+      appRows: [
+        { label: 'Living room lights', state: '32%', color: accent },
+        { label: 'Front door', state: 'LOCKED', color: 'rgba(247,244,239,0.75)' },
+        { label: 'Climate', state: '22°', color: accent },
+        { label: 'Kitchen speakers', state: 'PLAYING', color: 'rgba(247,244,239,0.75)' },
+      ],
+      steps: [
+        { n: '1', title: 'We sit down with you', text: 'Tell us what you want the space to do. We walk the property, look at your existing wiring and network, and figure out what’s realistic.' },
+        { n: '2', title: 'We design the system', text: 'You get a clear plan — what goes where, which brands, what it does, and what it costs. No surprises on install day.' },
+        { n: '3', title: 'We install and integrate', text: 'Our team fits everything and, the important part, makes it all talk to each other through one app. Tested before we leave.' },
+        { n: '4', title: 'We show you how, and stay', text: 'We walk you through it until it’s second nature, and we’re a call away if anything needs tuning or expanding later.' },
+      ],
+      projects: [
+        { title: 'The whole-house retrofit', image: 'public/images/project-home.jpg',
+          alt: 'Bright family living room with fireplace and built-in shelving', ratio: '16/11',
+          brief: 'A family wanted lighting, security, and climate on one app without tearing the house apart. We used wireless kit where we could and ran cable only where it mattered.',
+          result: 'One system that controls all three.' },
+        { title: 'The “it should just work” office', image: 'public/images/project-office.jpg',
+          alt: 'Glass-walled office meeting room with a city view', ratio: '4/3',
+          brief: 'A small office was juggling four apps for lights, locks, aircon, and meeting-room AV. We consolidated it into one control system.',
+          result: 'Reception runs the floor from a tablet.' },
+        { title: 'The holiday home, run remotely', image: 'public/images/project-holiday.jpg',
+          alt: 'Cabin in the woods glowing with warm lights at dusk', ratio: '4/3',
+          brief: 'An owner two hours away wanted to check on an empty property and warm it up before arriving. We set up remote cameras, climate, and alerts.',
+          result: 'All from their phone, from anywhere.' },
+      ],
+      brands: [
+        { name: 'Philips Hue', src: 'public/logos/philipshue.svg' },
+        { name: 'Sonos', src: 'public/logos/sonos.svg' },
+        { name: 'Ring', src: 'public/logos/ring.svg' },
+        { name: 'tado°', src: 'public/logos/tado.svg' },
+        { name: 'SmartThings', src: 'public/logos/smartthings.svg' },
+        { name: 'Yale', src: 'public/logos/yale.svg' },
+        { name: 'Ubiquiti', src: 'public/logos/ubiquiti.svg' },
+        { name: 'Bosch', src: 'public/logos/bosch.svg' },
+      ],
+      facts: [
+        { value: '[X]+', label: 'homes and sites fitted out' },
+        { value: '[X]', label: 'brands we install and support' },
+        { value: '[X] yrs', label: 'workmanship warranty' },
+        { value: '[Region]', label: 'where we work' },
+      ],
+      propertyTypes: ['Home', 'Commercial', 'New build'].map((label) => ({
+        label,
+        ...this.chip(this.state.type === label),
+        pick: () => this.setState({ type: label }),
+      })),
+      wants: ['Lighting', 'Security', 'Climate', 'AV', 'Full system', 'Not sure yet'].map((label) => ({
+        label,
+        ...this.chip(this.state.wants.includes(label)),
+        pick: () => this.setState((s) => ({
+          wants: s.wants.includes(label) ? s.wants.filter((w) => w !== label) : [...s.wants, label],
+        })),
+      })),
+      toggleConsent: () => this.setState((s) => ({ consent: !s.consent })),
+      consentMark: this.state.consent ? '✓' : '',
+      consentBg: this.state.consent ? '#1C2C39' : '#FFFFFF',
+      consentBorder: this.state.consent ? '#1C2C39' : '#E8E2D9',
+      submitLabel: this.state.sent ? 'Thanks — we’ll reply within one business day' : 'Request a consultation',
+      submit: () => this.setState({ sent: true }),
+      footerCols: [
+        { title: 'Systems', items: [
+          { label: 'Lighting', href: '#systems' },
+          { label: 'Security', href: '#systems' },
+          { label: 'Climate', href: '#systems' },
+          { label: 'Audio-Visual', href: '#systems' },
+        ] },
+        { title: 'Company', items: [
+          { label: 'Our story', href: 'EonTree About.dc.html' },
+          { label: 'Pricing', href: 'EonTree Pricing.dc.html' },
+          { label: 'Case study', href: 'EonTree Case Study.dc.html' },
+          { label: 'Where we work', href: 'EonTree Where We Work.dc.html' },
+        ] },
+        { title: 'Support', items: [
+          { label: 'After the install', href: 'EonTree Support.dc.html' },
+          { label: 'Questions', href: 'EonTree FAQ.dc.html' },
+          { label: 'Book a consultation', href: '#contact' },
+          { label: '[phone]', href: '' },
+        ] },
+      ].map((c) => ({
+        title: c.title,
+        items: c.items.map((it) => ({
+          ...it,
+          color: it.href ? 'rgba(247,244,239,0.78)' : 'rgba(247,244,239,0.42)',
+        })),
+      })),
+    };
+  }
+}
+
+</script>
+</body>
+</html>
