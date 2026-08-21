@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://eontree.vercel.app/sitemap.xml

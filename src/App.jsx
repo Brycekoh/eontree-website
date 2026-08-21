@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Routes, Route, useLocation, Link } from 'react-router-dom'
+import Seo from './components/Seo.jsx'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import Home from './pages/Home.jsx'
@@ -52,6 +53,7 @@ export default function App() {
       >
         Skip to content
       </a>
+      <Seo />
       <ScrollManager />
       <Navbar />
       <div id="main-content">

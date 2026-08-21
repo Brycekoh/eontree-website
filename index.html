@@ -30,6 +30,30 @@
       href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300&family=Manrope:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Organization schema. Upgrade to LocalBusiness once the real address,
+         phone and opening hours are confirmed — LocalBusiness requires them,
+         and it is what feeds local/map results. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "EonTree Technologies",
+        "url": "https://eontree.vercel.app/",
+        "logo": "https://eontree.vercel.app/logo-horizontal.png",
+        "description": "Smart home design, installation and support — lighting, security, climate and audio-visual — for homes and commercial spaces in Malaysia.",
+        "slogan": "Rooted in nature, powered by technology.",
+        "areaServed": { "@type": "Country", "name": "Malaysia" },
+        "knowsAbout": [
+          "Smart home installation",
+          "Home automation",
+          "Smart lighting",
+          "Security and CCTV integration",
+          "Climate control",
+          "Multi-room audio-visual"
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
